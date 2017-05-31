@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="" class="no-js isNotLoaded">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Кагоцел</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Новая карта зимних развлечений Москвы">
+    <meta property="og:description" content="Выберите развлечения по вкусу с помощью интерактивной карты зимних мероприятий Москвы">
+    <meta property="og:image" content="images/og.jpg">
+    <link rel="stylesheet" href="styles/vendor.css">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <div role="favorites" class="map-left-block -favorite">
+      <div class="favorites-title container"><span class="title">Любимые места</span><a href="#" role="favorites-close" class="close"><img src="images/icon-cross.svg" role="svg"></a></div>
+      <div role="favorites-container" class="favorites-container">
+        <div class="container">
+          <dl role="favorites-places" class="places-list -deleteable">
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div data-popup="popular" class="mobile-popular mobile-popup"><a href="#" data-popup-close="popular" class="mobile-popup-close"></a>
+      <div class="title">Популярное&nbsp;<span role="region-popular-title"></span></div>
+      <div role="popular-list" class="popular-list">
+      </div>
+    </div>
+    <div data-popup="categories" class="mobile-categories mobile-popup"><a href="#" data-popup-close="categories" class="mobile-popup-close"></a>
+      <div class="title">Категории</div>
+      <div role="mobile-categories" class="categories-list"></div>
+      <div class="bottom-nav"><a href="#" data-category-link="all" onclick="ga('send', 'event', 'button', 'open-all-categories', 'on-region-screen');" class="right-link">Выбрать все</a></div>
+    </div>
+    <div role="region-screen" class="map-region-screen">
+      <div class="mobile-region-header ms">
+        <div class="region-title"><a href="#" role="region-close" class="close-link"></a>
+          <div role="title-select-open" class="title-item"><a class="text"><span role="region-title"></span><span class="arrow-down"><img src="images/icon-arrow_down.svg" role="svg"></span></a></div>
+          <div role="title-select-list" class="title-select-list">
+            <div data-region-link="CAO" class="title-item"><a class="text">ЦАО</a></div>
+            <div data-region-link="SAO" class="title-item"><a class="text">САО</a></div>
+            <div data-region-link="SVAO" class="title-item"><a class="text">СВАО</a></div>
+            <div data-region-link="SZAO" class="title-item"><a class="text">СЗАО</a></div>
+            <div data-region-link="UAO" class="title-item"><a class="text">ЮАО</a></div>
+            <div data-region-link="UVAO" class="title-item"><a class="text">ЮВАО</a></div>
+            <div data-region-link="UZAO" class="title-item"><a class="text">ЮЗАО</a></div>
+            <div data-region-link="VAO" class="title-item"><a class="text">ВАО</a></div>
+            <div data-region-link="ZAO" class="title-item"><a class="text">ЗАО</a></div>
+          </div>
+        </div>
+        <div class="tabs"><a href="#" data-mobile-tab-link="list" class="tab"><span>Список</span></a><a href="#" data-mobile-tab-link="map" class="tab"><span>Карта</span></a></div>
+        <div class="category-select">
+          <div role="category-select-open" class="category-description">
+            <div class="left-side">
+              <div role="current-category-icon" class="icon"></div>
+            </div>
+            <div class="right-side">
+              <div class="category-card">
+                <div role="current-category-title" class="title"></div>
+              </div>
+            </div>
+            <div class="select-arrow"></div>
+          </div>
+          <div role="category-select-list" class="category-select-list"></div>
+        </div>
+      </div>
+      <div data-mobile-tab="list" class="map-left-block">
+        <div role="places" class="inner-container -places">
+          <div class="top-nav container ds"><a href="#" role="favorites-open" onclick="ga('send', 'event', 'button', 'open-favorites', 'on-region-screen');" class="favorites-open"><img src="images/icon-like.svg" role="svg"></a><a href="#" role="choose-category-link" onclick="ga('send', 'event', 'button', 'show-categories', 'on-region-screen');" class="right-link">Выбрать категорию</a></div>
+          <div role="category-info" class="category-info container">
+            <div role="category-info-regular" class="category-description">
+              <div class="left-side">
+                <div role="current-category-icon" class="icon"></div>
+              </div>
+              <div class="right-side">
+                <div class="category-card -medium">
+                  <div role="current-category-title" class="title"></div>
+                  <div role="current-category-desc" class="desc"></div>
+                </div>
+              </div>
+            </div>
+            <div role="category-info-all" class="categories-all-description">
+              <div role="current-category-title" class="title"></div>
+              <div role="categories-all-list" class="categories-all-list"></div>
+            </div>
+          </div>
+          <div role="places-container" class="places-container">
+            <div class="container">
+              <dl role="places-list" class="places-list -counted">
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div role="categories" class="inner-container -categories">
+          <div class="top-nav container"><a href="#" role="favorites-open" onclick="ga('send', 'event', 'button', 'open-favorites', 'on-region-screen');" class="favorites-open"><img src="images/icon-like.svg" role="svg"></a><a href="#" role="categories-close" onclick="ga('send', 'event', 'button', 'close-categories', 'on-region-screen');" class="right-link">Отменить</a></div>
+          <div role="categories-container" class="categories-container">
+            <div role="categories-region-list" class="container">
+            </div>
+          </div>
+          <div class="bottom-nav container"><a href="#" data-category-link="all" onclick="ga('send', 'event', 'button', 'open-all-categories', 'on-region-screen');" class="right-link">Выбрать все</a></div>
+        </div>
+        <div role="place" class="inner-container -place">
+          <div class="back-link">
+            <div class="container"><a href="#" role="place-close" onclick="ga('send', 'event', 'button', 'close-place', 'on-region-screen');"><img role="svg" src="images/icon-arrow_left.svg"><span role="current-category-title"></span></a></div>
+          </div>
+          <div role="place-scroll" class="place-info">
+            <div style="background-image: url(images/tmp/place-image.jpg);" role="current-place-image" class="place-image"></div>
+            <div class="container">
+              <div class="header">
+                <div role="current-place-tag" class="tag"></div>
+                <div role="current-place-title" class="title"></div>
+              </div>
+              <div class="content">
+                <div class="info">
+                  <div class="title">Ближайшее метро</div>
+                  <div role="current-place-subway" class="value"></div>
+                </div>
+                <div class="info">
+                  <div class="title">Адрес</div>
+                  <div role="current-place-address" class="value"></div>
+                </div>
+                <div role="current-place-description" class="description"></div>
+              </div>
+            </div>
+          </div>
+          <div class="place-nav">
+            <div class="container">
+              <div class="nav-icon -like"><a href="#" role="current-place-like" class="inner-link"><img src="images/icon-like_stroked.svg" role="svg"></a>
+                <div role="popup-like" class="popup-like"><a href="#" role="favorites-open" onclick="ga('send', 'event', 'button', 'open-favorites', 'from-like-popup');" class="link">Перейти в любимые места...</a></div>
+              </div>
+              <div class="nav-icon -share"><a href="#" role="place-share" class="inner-link"><img src="images/icon-share.svg" role="svg"></a>
+                <div role="popup-share" class="popup-share"><a href="#" data-share="tw" data-share-link="" class="link -tw"></a><a href="#" data-share="vk" data-share-link="" class="link -vk"></a><a href="#" data-share="fb" data-share-link="" class="link -fb"></a></div>
+              </div><a href="#" target="_blank" role="current-place-link" onclick="ga('send', 'event', 'button', 'place-know-more', 'on-region-screen');" class="nav-btn">Узнать подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-mobile-tab="map" class="map-right-block">
+        <div class="map-legend ds">
+          <div class="legend-block"><span class="icon -flag"></span><span class="description">Советы</span></div>
+          <div class="legend-block"><span class="icon -dot"></span><span class="description">Места и события</span></div>
+        </div><a href="#" role="region-zoom" class="zoom-link"><span class="ms -in">Увеличить</span><span class="ms -out">Уменьшить</span></a><a href="#" role="region-close" class="close-map ds"><img src="images/bold-cross.svg" role="svg"></a>
+        <div class="map-mini-nav ds">
+          <div class="regions"><img src="images/regions/CAO.svg" role="svg" class="-region-CAO region"><img src="images/regions/SAO.svg" role="svg" class="-region-SAO region"><img src="images/regions/SVAO.svg" role="svg" class="-region-SVAO region"><img src="images/regions/SZAO.svg" role="svg" class="-region-SZAO region"><img src="images/regions/UAO.svg" role="svg" class="-region-UAO region"><img src="images/regions/UVAO.svg" role="svg" class="-region-UVAO region"><img src="images/regions/UZAO.svg" role="svg" class="-region-UZAO region"><img src="images/regions/VAO.svg" role="svg" class="-region-VAO region"><img src="images/regions/ZAO.svg" role="svg" class="-region-ZAO region">
+          </div><img src="images/map_mini-etalon.png" data-width="115" data-height="122" usemap="#miniMap" class="etalon"><map name="miniMap" id="miniMap" role="responsive-map">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="CAO" coords="40,58,50,78,79,72,83,50,59,43">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="SAO" coords="41,45,58,40,47,1,20,1,23,17,35,19">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="SZAO" coords="31,22,41,56,32,61,19,54,17,34,20,26">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="ZAO" coords="45,74,34,93,1,105,1,84,16,77,16,58,22,57,31,65">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="UZAO" coords="47,77,60,82,62,119,57,121,41,120,37,110,38,91">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="UAO" coords="64,82,65,111,76,113,95,103,95,93,84,91,83,82,72,76">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="UVAO" coords="79,76,83,84,87,92,108,91,111,74,88,57">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="VAO" coords="85,55,114,70,114,55,106,46,110,35,91,24,79,33,79,42">
+            <area shape="poly" data-a="region-link-on-mini-map" data-region-link="SVAO" coords="61,39,72,42,83,18,65,8,55,7"></map>
+        </div>
+        <div role="region-title" class="map-region-title ds"></div>
+        <div role="regions-wrap" class="regions-maps">
+          <div data-region="CAO" class="region-map"><img src="images/regions_shadows/CAO.png" class="shadow"><img src="images/regions_detailed/CAO.png" usemap="region-map-CAO" role="region-image" class="image"><map id="region-map-CAO" name="region-map-CAO">
+              <area shape="poly" data-place-tooltip="Спасская башня" coords="464,440,466,524,673,529,666,443,601,424,563,312,528,422">
+              <area shape="poly" data-place-tooltip="Жилой дом на Котельнической набережной" coords="641,621,646,725,936,720,937,617,865,610,793,447,710,591">
+              <area shape="poly" data-place-tooltip="Центральный парк культуры и отдыха им. М.Горькогo" coords="283,762,361,805,499,797,564,773,495,733,323,745">
+              <area shape="poly" data-place-tooltip="Москва-Сити" coords="76,505,230,520,237,322,168,278,74,329,61,446">
+              <area shape="poly" data-place-tooltip="Екатерининский парк" coords="584,246,654,278,750,250,751,184,716,153,615,176">
+              <area shape="poly" data-place-tooltip="Жилой дом на Кудринской площади" coords="202,222,412,231,411,84,302,1,191,91"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n2"></canvas>
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n3"></canvas>
+              <canvas width="150" height="150" role="canvas-animation" data-image="images/Sequence/watches.png" data-steps="83" class="animation -watches"></canvas>
+              <canvas width="75" height="75" role="canvas-animation" data-image="images/Sequence/water.png" data-steps="50" class="animation -water-CAO"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-CAO -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="15" class="animation -elka-CAO -n2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="30" class="animation -elka-CAO -n3"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="45" class="animation -elka-CAO -n4"></canvas>
+              <div class="animation -cloud -n1"><img src="images/Sequence/cloud.svg"></div>
+              <div class="animation -cloud -n2"><img src="images/Sequence/cloud.svg"></div>
+            </div>
+          </div>
+          <div data-region="SAO" class="region-map"><img src="images/regions_shadows/SAO.png" class="shadow"><img src="images/regions_detailed/SAO.png" usemap="region-map-SAO" role="region-image" class="image"><map id="region-map-SAO" name="region-map-SAO">
+              <area shape="poly" data-place-tooltip="Грачевский парк" coords="828,950,1061,956,1044,876,969,750,818,885">
+              <area shape="poly" data-place-tooltip="Северный Речной Вокзал" coords="778,922,746,1062,624,1093,626,1177,954,1185,951,1097,832,1069">
+              <area shape="poly" data-place-tooltip="Парк Ангарские пруды" coords="797,721,915,751,1042,717,1086,670,1011,652,931,668,798,681">
+              <area shape="poly" data-place-tooltip="Парк Березовая Роща" coords="723,1357,820,1346,908,1324,971,1348,921,1385,859,1412,720,1399">
+              <area shape="poly" data-place-tooltip="Тимирязевский Парк" coords="1011,1135,954,1261,1013,1317,1019,1345,1082,1349,1101,1307,1055,1211,1055,1188,1077,1177,1054,1104"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n1"></canvas>
+              <canvas width="200" height="200" role="canvas-animation" data-image="images/Sequence/plane.png" data-steps="40" class="animation -plane"></canvas>
+              <canvas width="75" height="75" role="canvas-animation" data-image="images/Sequence/water.png" data-steps="50" class="animation -water-SAO"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-SAO -n1"></canvas>
+            </div>
+          </div>
+          <div data-region="SVAO" class="region-map"><img src="images/regions_shadows/SVAO.png" class="shadow"><img src="images/regions_detailed/SVAO.png" usemap="region-map-SVAO" role="region-image" class="image"><map id="region-map-SVAO" name="region-map-SVAO">
+              <area shape="poly" data-place-tooltip="Лианозовский питомник" coords="241,417,255,474,440,479,436,394,321,367">
+              <area shape="poly" data-place-tooltip="Главный вход ВДНХ" coords="531,568,661,568,657,469,592,449,526,473">
+              <area shape="poly" data-place-tooltip="Колесо на ВВЦ" coords="652,598,684,656,732,656,769,598,737,546,668,546">
+              <area shape="poly" data-place-tooltip="Главный ботанический сад им. Н.В. Цицина Российской академии наук" coords="257,640,464,643,458,575,352,524,247,576">
+              <area shape="poly" data-place-tooltip="Космос" coords="431,763,542,806,588,790,586,698,541,676,429,683">
+              <area shape="poly" data-place-tooltip="Останкинская телебашня" coords="351,701,329,727,323,891,308,955,396,955,377,893,368,725"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n1"></canvas>
+              <canvas width="100" height="100" role="canvas-animation" data-image="images/Sequence/circle.png" data-steps="150" class="animation -circle-1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-SVAO -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="15" class="animation -elka-SVAO -n2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="30" class="animation -elka-SVAO -n3"></canvas>
+            </div>
+          </div>
+          <div data-region="SZAO" class="region-map"><img src="images/regions_shadows/SZAO.png" class="shadow"><img src="images/regions_detailed/SZAO.png" usemap="region-map-SZAO" role="region-image" class="image"><map id="region-map-SZAO" name="region-map-SZAO">
+              <area shape="poly" data-place-tooltip="cтадион Открытие Арена" coords="449,756,422,784,421,828,450,852,679,853,704,834,711,806,705,781,679,755,563,743">
+              <area shape="poly" data-place-tooltip="Музейно-парковый комплекс «Северное Тушино»" coords="561,448,526,591,672,574,758,602,799,589,829,529,812,463,714,373,588,385">
+              <area shape="poly" data-place-tooltip="Митино" coords="104,770,270,773,365,690,237,531,86,584,73,682">
+              <area shape="poly" data-place-tooltip="Парк Покровское-Стрешнево" coords="768,1001,922,1142,976,1091,980,971,916,867,819,915">
+              <area shape="poly" data-place-tooltip="Серебряный Бор" coords="549,1266,602,1292,701,1251,797,1175,751,1086,658,1065,447,1076,456,1192"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-SZAO -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="15" class="animation -elka-SZAO -n2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="30" class="animation -elka-SZAO -n3"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="45" class="animation -elka-SZAO -n4"></canvas>
+            </div>
+          </div>
+          <div data-region="UAO" class="region-map"><img src="images/regions_shadows/UAO.png" class="shadow"><img src="images/regions_detailed/UAO.png" usemap="region-map-UAO" role="region-image" class="image"><map id="region-map-UAO" name="region-map-UAO">
+              <area shape="poly" data-place-tooltip="Коломенское" coords="403,343,538,347,459,84">
+              <area shape="poly" data-place-tooltip="Музей-заповедник Царицыно" coords="517,689,826,700,787,560,535,550">
+              <area shape="poly" data-place-tooltip="Бирюлевский дендропарк" coords="322,976,460,1001,564,957,561,934,484,924,442,941,340,946">
+              <area shape="poly" data-place-tooltip="Храм Живоначальной Троицы" coords="169,678,174,809,329,810,330,701,288,629,246,578">
+              <area shape="poly" data-place-tooltip="Нагатинская Пойма" coords="276,149,370,153,371,94,320,21,266,91"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n1"></canvas>
+              <canvas width="75" height="75" role="canvas-animation" data-image="images/Sequence/water.png" data-steps="50" class="animation -water-1"></canvas>
+              <canvas width="100" height="100" role="canvas-animation" data-image="images/Sequence/boat.png" data-steps="90" class="animation -boat"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-UAO -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="15" class="animation -elka-UAO -n2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="30" class="animation -elka-UAO -n3"></canvas>
+            </div>
+          </div>
+          <div data-region="UVAO" class="region-map"><img src="images/regions_shadows/UVAO.png" class="shadow"><img src="images/regions_detailed/UVAO.png" usemap="region-map-UVAO" role="region-image" class="image"><map id="region-map-UVAO" name="region-map-UVAO">
+              <area shape="poly" data-place-tooltip="Конный двор" coords="465,519,533,554,684,545,685,436,463,440">
+              <area shape="poly" data-place-tooltip="Кузьминский парк" coords="661,601,701,626,855,596,802,535,691,566">
+              <area shape="poly" data-place-tooltip="парк имени Шкулева" coords="247,456,459,460,439,354,245,359">
+              <area shape="poly" data-place-tooltip="Парк Печатники" coords="188,410,256,546,40,553,41,435"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n1"></canvas>
+              <canvas width="75" height="75" role="canvas-animation" data-image="images/Sequence/water.png" data-steps="50" class="animation -water-UVAO"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-UVAO -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="15" class="animation -elka-UVAO -n2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="30" class="animation -elka-UVAO -n3"></canvas>
+            </div>
+          </div>
+          <div data-region="UZAO" class="region-map"><img src="images/regions_shadows/UZAO.png" class="shadow"><img src="images/regions_detailed/UZAO.png" usemap="region-map-UZAO" role="region-image" class="image"><map id="region-map-UZAO" name="region-map-UZAO">
+              <area shape="poly" data-place-tooltip="Монумент Ю. А. Гагарину" coords="467,369,644,366,646,306,600,292,588,12,525,2,512,261,463,302">
+              <area shape="poly" data-place-tooltip="Тропарево" coords="314,1175,401,1179,465,1155,377,996,289,1106,280,1164">
+              <area shape="poly" data-place-tooltip="Битцевский парк" coords="595,1212,620,1299,685,1301,776,1225,680,1089,603,1133">
+              <area shape="poly" data-place-tooltip="Мореон" coords="309,1369,370,1384,521,1380,531,1343,495,1306,417,1230,307,1199,261,1243,249,1344">
+              <area shape="poly" data-place-tooltip="Воронцовский парк" coords="230,648,480,654,531,558,509,493,433,479,219,472,143,542,176,600"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-UZAO -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="15" class="animation -elka-UZAO -n2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="30" class="animation -elka-UZAO -n3"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="45" class="animation -elka-UZAO -n4"></canvas>
+              <div class="animation -ballon"><img src="images/Sequence/ballon.svg"></div>
+            </div>
+          </div>
+          <div data-region="VAO" class="region-map"><img src="images/regions_shadows/VAO.png" class="shadow"><img src="images/regions_detailed/VAO.png" usemap="region-map-VAO" role="region-image" class="image"><map id="region-map-VAO" name="region-map-VAO">
+              <area shape="poly" data-place-tooltip="Кремль в Измайлово" coords="349,451,450,472,541,439,486,400,488,338,428,249,397,327,368,406">
+              <area shape="poly" data-place-tooltip="Парк Сокольники" coords="89,328,296,328,300,294,183,246,88,276">
+              <area shape="poly" data-place-tooltip="Измайловский парк" coords="324,558,363,610,403,611,436,573,434,509,378,488,322,506">
+              <area shape="poly" data-place-tooltip="Кусковский лесопарк" coords="713,769,671,926,721,966,767,926">
+              <area shape="poly" data-place-tooltip="Перовский" coords="517,716,549,823,571,826,606,718"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n1"></canvas>
+              <canvas width="100" height="100" role="canvas-animation" data-image="images/Sequence/circle.png" data-steps="150" class="animation -circle-2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-VAO -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="15" class="animation -elka-VAO -n2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" data-next="30" class="animation -elka-VAO -n3"></canvas>
+            </div>
+          </div>
+          <div data-region="ZAO" class="region-map"><img src="images/regions_shadows/ZAO.png" class="shadow"><img src="images/regions_detailed/ZAO.png" usemap="region-map-ZAO" role="region-image" class="image"><map id="region-map-ZAO" name="region-map-ZAO">
+              <area shape="poly" data-place-tooltip="Воробьевы Горы" coords="1096,470,1314,431,1285,320,1240,321,1097,428,1033,407,937,341,926,261,933,221,1003,220,1032,243,1090,299,1118,358,1092,431">
+              <area shape="poly" data-place-tooltip="Московский государственный университет имени М.В.Ломоносова" coords="855,617,1132,619,1126,511,1112,489,1031,492,988,409,953,490,896,522,867,481,833,535,841,611">
+              <area shape="poly" data-place-tooltip="Суворовский парк" coords="827,407,833,483,684,530,583,497,598,433,609,391,701,354">
+              <area shape="poly" data-place-tooltip="Сколково" coords="279,821,481,818,520,768,518,711,442,711,409,732,348,669,286,667,283,717,261,716,259,775,283,779,271,806"></map>
+            <div role="dots-container" class="dots-container"></div>
+            <div class="hints-container">
+              <canvas width="50" height="50" role="hint-show canvas-animation" data-image="images/Sequence/flag.png" data-steps="42" class="hint -n1"></canvas>
+              <canvas width="150" height="100" role="canvas-animation" data-image="images/Sequence/kanatka.png" data-steps="199" class="animation -kanatka"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-ZAO -n1"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-ZAO -n2"></canvas>
+              <canvas width="40" height="60" role="canvas-animation" data-image="images/Sequence/elka.png" data-steps="59" class="animation -elka-ZAO -n3"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div role="fixed-logo" class="fixed-logo"><a href="http://www.kagocel.ru/promo/?utm_source=kudago.com&amp;utm_medium=static&amp;utm_campaign=01.11.2016_11.12.2016_button__-&amp;utm_term=logo&amp;utm_content=1472478539" role="main-kagocel" target="_blank" class="main-kagocel -right"></a></div>
+    <div role="fixed-share" class="fixed-share"><span role="share-link" class="share-link"><a href="#" data-share="tw" class="share-btn -tw"><img src="images/social-tw.svg" role="svg"></a><a href="#" data-share="fb" class="share-btn -fb"><img src="images/social-fb.svg" role="svg"></a><a href="#" data-share="vk" class="share-btn -vk"><img src="images/social-vk.svg" role="svg"></a></span></div><a href="#" role="favorites-open an-map-favorites fixed-favorites" class="fixed-favorites favorite-places-link"><span class="icon"><img src="images/icon-like.svg" role="svg"></span><span class="text">Любимые места</span></a>
+    <div data-mobile-header="1" class="mobile-header ms">
+      <div class="title">
+        <div role="mobile-prev" class="mobile-prev-arrow ms"><img src="images/icon_mobile-left.svg" role="svg"></div>КАРТА МОСКВЫ
+      </div>
+      <div class="desc">Жми на&nbsp;округ и&nbsp;смотри места для зимних развлечений!</div><a href="#" data-popup-link="menu" class="mobile-menu-burger"></a>
+    </div>
+    <div data-mobile-header="2" class="mobile-header ms">
+      <div class="title">
+        <div role="mobile-prev" class="mobile-prev-arrow ms"><img src="images/icon_mobile-left.svg" role="svg"></div>Советы
+      </div>
+      <div class="desc">Как обезопасить себя<br>от гриппа и ОРВИ</div><a href="#" data-popup-link="menu" class="mobile-menu-burger"></a>
+    </div>
+    <div data-mobile-header="3" class="mobile-header -without-desc ms">
+      <div class="title">
+        <div role="mobile-prev" class="mobile-prev-arrow ms"><img src="images/icon_mobile-left.svg" role="svg"></div>Подборки
+      </div><a href="#" data-popup-link="menu" class="mobile-menu-burger"></a>
+    </div>
+    <nav role="right-nav" class="right-nav">
+      <div class="inner"><a href="#map" role="right-link" class="link"><span class="text">Карты</span></a><a href="#advice" role="right-link" class="link"><span class="text">Советы</span></a><a href="#collections" role="right-link" class="link"><span class="text">Подборки</span></a></div>
+    </nav>
+    <div role="container" class="container">
+      <section role="first-screen" data-mobile-screen-eq="0" class="section -main">
+        <div role="an-main-b1" class="screen-background -n2"></div>
+        <div role="an-main-b2" class="screen-background -n1"></div>
+        <div role="an-main-message" class="screen-message"></div>
+        <div class="main-content"><a href="http://www.kagocel.ru/promo/?utm_source=kudago.com&amp;utm_medium=static&amp;utm_campaign=01.11.2016_11.12.2016_button__-&amp;utm_term=logo&amp;utm_content=1472478539" target="_blank" role="an-main-logo main-kagocel" class="main-kagocel main-logo ms"></a>
+          <div class="inner">
+            <div class="main-text">
+              <div role="an-main-title" class="title">Зима&nbsp;&mdash; любимое <br>время года москвичей.</div>
+              <div role="an-main-text" class="desc">
+                <p>Конец года&nbsp;&mdash; долгожданная предновогодняя пора, <br class="ds">сезон ёлок, санок, коньков, горок и&nbsp;снежков.</p>
+                <p>Выберите развлечения по&nbsp;вкусу с&nbsp;помощью <br class="ds">интерактивной карты зимних мероприятий Москвы <br class="ds">и не&nbsp;забудьте позаботиться о&nbsp;здоровье.</p>
+                <p>В&nbsp;этом вам поможет противовирусный препарат Кагоцел <br class="ds">и&nbsp;ценные советы на период зимних праздников.</p>
+              </div>
+            </div><a href="#map" data-show-screen="1" onclick="ga('send', 'event', 'cta', 'to-map', 'on-landing-screen');" role="an-main-down-link" class="main-down-link">
+              <div class="text"><span role="events-amount"></span></div>
+              <div class="icon"><img src="images/icon-arrow_down.svg" role="svg"></div></a>
+          </div>
+        </div>
+      </section>
+      <section data-mobile-screen-eq="1" class="section -map -mfs">
+        <div role="map-moscow-screen" class="map-moscow-screen"><a role="mobile-next" class="mobile-down-link ms"><span class="text">Советы</span><span class="icon"><img src="images/icon_mobile-down.svg" role="svg"></span></a>
+          <div class="map-content">
+            <div class="map-area-title ds">
+              <div role="an-map-title" class="title">КАРТА МОСКВЫ</div>
+              <div role="an-map-desc" class="desc">Жми на&nbsp;округ и&nbsp;смотри места для зимних развлечений!</div>
+            </div>
+            <div role="category-preview-container an-map-category-wrap" class="category-preview-container ds">
+              <div role="category-description" class="category-description">
+                <div role="category-description-inner" class="mobile-inner-content">
+                  <div class="left-side">
+                    <div role="current-category-icon" class="icon"></div>
+                    <div role="current-category-count" class="text"></div>
+                  </div>
+                  <div class="right-side">
+                    <div class="category-card">
+                      <div role="current-category-title" class="title"></div>
+                      <div role="current-category-desc" class="desc"></div>
+                    </div>
+                    <div class="ms mobile-category-link"><a href="#" data-popup-link="categories">Выбрать категорию</a></div>
+                  </div>
+                  <div role="current-category-examples" class="category-examples"></div>
+                </div>
+                <div role="category-dragger" class="ms mobile-category-dragger">
+                  <div class="icon"></div>
+                  <div role="category-dragger-text" class="text">Категория мест и событий
+                  </div>
+                </div>
+              </div>
+              <div role="categories-main-list" class="categories-main-list">
+              </div>
+            </div><span role="choose-category-container an-map-choose" class="choose-category-link"><a href="#" role="choose-category-link -on-moscow" onclick="ga('send', 'event', 'button', 'show-categories', 'on-map-screen');" class="choose">Выбрать категорию</a><a href="#" role="categories-close" onclick="ga('send', 'event', 'button', 'close-categories', 'on-map-screen');" class="close">Отменить</a><a href="#" data-category-link="all" onclick="ga('send', 'event', 'button', 'open-all-categories', 'on-map-screen');" class="all">Выбрать все</a></span>
+          </div>
+          <div role="an-map-map" class="map-moscow-wrap">
+            <div class="map-moscow">
+              <div class="regions"><img src="images/regions/CAO.svg" role="svg" class="-region-CAO region">
+                <div data-region-label="CAO" class="label -name -CAO">ЦАО</div>
+                <div data-region-label="CAO" data-count-category="CAO" class="label -capacity -CAO"></div><img src="images/regions/SAO.svg" role="svg" class="-region-SAO region">
+                <div data-region-label="SAO" class="label -name -SAO">САО</div>
+                <div data-region-label="SAO" data-count-category="SAO" class="label -capacity -SAO"></div><img src="images/regions/SVAO.svg" role="svg" class="-region-SVAO region">
+                <div data-region-label="SVAO" class="label -name -SVAO">СВАО</div>
+                <div data-region-label="SVAO" data-count-category="SVAO" class="label -capacity -SVAO"></div><img src="images/regions/SZAO.svg" role="svg" class="-region-SZAO region">
+                <div data-region-label="SZAO" class="label -name -SZAO">СЗАО</div>
+                <div data-region-label="SZAO" data-count-category="SZAO" class="label -capacity -SZAO"></div><img src="images/regions/UAO.svg" role="svg" class="-region-UAO region">
+                <div data-region-label="UAO" class="label -name -UAO">ЮАО</div>
+                <div data-region-label="UAO" data-count-category="UAO" class="label -capacity -UAO"></div><img src="images/regions/UVAO.svg" role="svg" class="-region-UVAO region">
+                <div data-region-label="UVAO" class="label -name -UVAO">ЮВАО</div>
+                <div data-region-label="UVAO" data-count-category="UVAO" class="label -capacity -UVAO"></div><img src="images/regions/UZAO.svg" role="svg" class="-region-UZAO region">
+                <div data-region-label="UZAO" class="label -name -UZAO">ЮЗАО</div>
+                <div data-region-label="UZAO" data-count-category="UZAO" class="label -capacity -UZAO"></div><img src="images/regions/VAO.svg" role="svg" class="-region-VAO region">
+                <div data-region-label="VAO" class="label -name -VAO">ВАО</div>
+                <div data-region-label="VAO" data-count-category="VAO" class="label -capacity -VAO"></div><img src="images/regions/ZAO.svg" role="svg" class="-region-ZAO region">
+                <div data-region-label="ZAO" class="label -name -ZAO">ЗАО</div>
+                <div data-region-label="ZAO" data-count-category="ZAO" class="label -capacity -ZAO"></div>
+              </div><img src="images/map-etalon.png" usemap="#moscowMap" data-width="631" data-height="667" class="etalon"><map id="moscowMap" name="moscowMap" role="responsive-map">
+                <area shape="poly" data-region-link="CAO" data-a="region-link-on-map" coords="273,282,283,295,302,286,312,287,311,301,291,320,295,332,307,334,313,330,319,335,328,322,356,320,358,313,366,316,370,313,384,313,392,304,384,292,374,289,375,279,382,278,387,268,399,262,398,257,352,238,349,244,341,242,338,252,330,249,329,241,322,242,317,257,289,262">
+                <area shape="poly" data-region-link="SAO" data-a="region-link-on-map" coords="227,147,251,201,257,202,256,220,277,273,286,259,315,254,319,240,311,197,314,187,307,126,288,114,248,40,219,20,188,43,166,63,168,93,186,114,197,113,224,127">
+                <area shape="poly" data-region-link="SZAO" data-a="region-link-on-map" coords="189,117,201,120,220,128,225,150,275,275,270,279,251,272,247,291,233,298,224,292,240,275,229,261,207,261,187,266,187,249,203,199,181,207,172,197,167,181,175,165,187,161">
+                <area shape="poly" data-region-link="ZAO" data-a="region-link-on-map" coords="187,269,226,265,235,275,220,292,230,301,248,295,254,278,266,282,280,297,303,289,308,289,307,302,289,318,289,332,293,342,271,373,277,376,243,410,222,389,215,415,193,428,155,451,111,474,92,462,74,457,62,445,76,435,93,424,119,430,138,426,147,428,159,406,167,388,179,375,192,375,203,374,209,362,192,328,181,291">
+                <area shape="poly" data-region-link="UZAO" data-a="region-link-on-map" coords="245,416,273,457,298,467,291,479,301,493,295,502,285,503,252,526,278,534,286,556,299,557,322,567,334,565,317,534,326,499,323,488,309,481,316,463,313,448,317,423,314,409,335,412,334,378,337,366,322,338,299,339">
+                <area shape="poly" data-region-link="UAO" data-a="region-link-on-map" coords="311,480,313,480,327,486,329,499,333,498,330,484,355,482,383,482,448,428,447,407,442,404,421,413,402,413,376,398,376,383,399,366,399,355,391,351,372,344,368,318,361,318,357,323,330,326,325,334,340,362,338,378,338,413,320,413,321,425,316,445,319,462">
+                <area shape="poly" data-region-link="UVAO" data-a="region-link-on-map" coords="370,317,384,315,394,306,394,295,378,288,385,281,399,281,406,286,422,299,433,304,496,346,493,369,477,363,480,390,467,414,451,426,449,405,443,402,422,409,404,409,381,398,379,385,401,369,402,356,375,343">
+                <area shape="poly" data-region-link="VAO" data-a="region-link-on-map" coords="363,240,400,254,402,263,391,270,385,277,378,281,378,284,387,281,399,279,412,284,413,289,434,301,498,344,505,337,516,332,532,329,537,318,522,307,505,319,493,303,506,291,505,287,482,291,480,274,476,227,497,225,507,218,518,213,500,202,481,210,471,203,410,144,392,159,403,163,406,171,405,176,399,178,391,175,389,173,390,168,381,168,387,177,380,184,374,188,372,203,361,232">
+                <area shape="poly" data-region-link="SVAO" data-a="region-link-on-map" coords="279,77,295,73,287,59,318,61,308,72,310,80,302,111,319,107,349,120,393,127,410,142,390,157,397,163,404,171,399,177,392,172,392,167,378,167,382,174,380,180,371,186,370,203,359,230,360,239,352,235,350,241,337,238,337,245,334,246,332,240,322,238,315,198,319,186,310,124,292,113"></map>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section data-mobile-screen-eq="2" class="section -advice -mfs">
+        <div role="an-advice-circle" class="section-circle"></div><a role="mobile-next" class="mobile-down-link ms"><span class="text">Подборки</span><span class="icon"><img src="images/icon_mobile-down.svg" role="svg"></span></a>
+        <div class="advice-description ds">
+          <div role="an-advice-title" class="section-title">Советы</div>
+          <div role="an-advice-preview" class="preview">Как обезопасить себя <br>от&nbsp;гриппа и&nbsp;ОРВИ</div>
+          <div role="an-advice-desc" class="description">Чтобы не&nbsp;заболеть в&nbsp;период праздников, на&nbsp;помощь придёт универсальный противовирусный препарат Кагоцел.<br><br>Он&nbsp;разработан специально для профилактики и&nbsp;лечения гриппа и ОРВИ у&nbsp;взрослых и&nbsp;детей с&nbsp;3&nbsp;лет.</div>
+        </div>
+        <div class="advice-slider">
+          <div role="an-advice-circle2" class="slider-circle"></div>
+          <div class="inner">
+            <div role="an-advice-count" class="advice-count">
+              <div role="advice-current" class="current"></div>
+              <div class="slash"></div>
+              <div role="advice-amount" class="amount"></div>
+            </div>
+            <div role="advice-slider an-advice-slider" class="slides">
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n1"></div>Выбирайте гардероб<br>правильно
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">Выбирайте гардероб правильно. Перед каждым выходом на&nbsp;улицу, обращайте внимание на&nbsp;температуру за&nbsp;окном. Зимняя погода обманчива, и&nbsp;в&nbsp;погожий солнечный денёк на&nbsp;улице может оказаться значительно холоднее, чем кажется из&nbsp;помещения. </div>
+                      <div class="column">Убедитесь, что ваша зимняя одежда достаточно тёплая, непромокаемая и&nbsp;не&nbsp;забудьте о&nbsp;термобелье. Особенно это важно для младших членов семьи, которых не&nbsp;удержать от&nbsp;игр со&nbsp;снегом. Правильно подобранная одежда поможет сохранить естественный теплообмен и&nbsp;не&nbsp;позволит вам замёрзнуть.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n2"></div>Помните основы профилактики <br class="ds">гриппа и&nbsp;ОРВИ
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">Здоровое питание, отказ от&nbsp;вредных привычек, занятия спортом, регулярное употребление витамина&nbsp;C и&nbsp;препаратов-индукторов собственных интерферонов&nbsp;&mdash; белков, являющихся естественной защитой от&nbsp;вирусов.</div>
+                      <div class="column">К&nbsp;таким средствам относится Кагоцел. Препарат подходит как для профилактики, так и&nbsp;для лечения ОРВИ и&nbsp;гриппа. При этом Кагоцел имеет минимум противопоказаний и&nbsp;побочных эффектов.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n3"></div>Постарайтесь исключить из&nbsp;жизни <br class="ds">стрессовые факторы
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column"> Они ослабляют иммунитет организма и&nbsp;могут привести к&nbsp;развитию ОРВИ. В&nbsp;период праздников переключиться со&nbsp;стресса на&nbsp;что-то веселое и&nbsp;приятное&nbsp;&mdash; пара пустяков. Вокруг масса новогодних мероприятий, которые позволят вам отвлечься от&nbsp;источника стресса.</div>
+                      <div class="column">Также старайтесь равномерно распределять психологическую и&nbsp;физические нагрузки. Это поможет укрепить иммунитет и&nbsp;снизит шансы подхватить простуду или грипп.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n4"></div>Помните об&nbsp;основныx <br class="ds">симптомах ОРВИ
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">Мы&nbsp;все испытывали и&nbsp;наблюдали их&nbsp;не&nbsp;раз: внезапное начало болезни, быстро нарастающая высокая температура, резкий озноб, выделения из&nbsp;носа, головная боль, боли в&nbsp;мышцах и&nbsp;иногда&nbsp;&mdash; суставах.</div>
+                      <div class="column">Если у&nbsp;вас или у&nbsp;ваших детей проявляются эти симптомы, необходимо как можно скорее обратиться за&nbsp;квалифицированной медицинской помощью. Также важно следовать рекомендациям по&nbsp;уходу за&nbsp;больным ОРВИ и&nbsp;гриппом.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n5"></div>Не&nbsp;забывайте о&nbsp;правильном питании и&nbsp;достаточном питье
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">В&nbsp;холодный период года организм нуждается в&nbsp;витаминах, особенно в&nbsp;витамине С&nbsp;&mdash; всем знакомой аскорбинке. Вот когда пригодятся домашние заготовки&nbsp;&mdash; например, квашеная капуста.</div>
+                      <div class="column">И&nbsp;конечно, варенья и&nbsp;морсы на&nbsp;основе ягод, которые так любят дети&nbsp;&mdash; смородина, брусника, клюква. Питательными веществами также богаты сухофрукты&nbsp;&mdash; курага, чернослив, изюм. Самое время достать и&nbsp;открыть пузатую банку бабушкиного компота. </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n6"></div>Не&nbsp;забывайте <br class="ds">о&nbsp;народных средствах
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">Народные средства не&nbsp;только эффективны при профилактике гриппа и&nbsp;ОРВИ, но&nbsp;ещё и&nbsp;весьма доступны. Практически в&nbsp;каждом доме можно найти целый ряд продуктов, обладающих прекрасными профилактическими и&nbsp;лечебными свойствами.</div>
+                      <div class="column">Всем известны отвары и&nbsp;чаи на&nbsp;травах, для них заваривают ромашку, мяту, шалфей, полынь. Мёд, и&nbsp;без того полезный продукт, в&nbsp;сочетании с&nbsp;тёплым молоком становится ещё полезнее. А&nbsp;лук и&nbsp;чеснок в&nbsp;блюдах помогают справиться с&nbsp;микробами и&nbsp;защититься от&nbsp;простуды.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n7"></div>Знайте &laquo;врага<br>в&nbsp;лицо&raquo
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">Знакомые с&nbsp;детства буквы ОРВИ (или ОРЗ) это остро-респираторные вирусные инфекции. Они провоцируются вирусами, паразитирующими внутри клеток, и&nbsp;поражают верхние дыхательные пути. Подхватить вирус довольно легко&nbsp;&mdash; при контакте с&nbsp;заболевшим человеком, через общие предметы пользования, через пищу, в&nbsp;общественном транспорте, на&nbsp;улице.</div>
+                      <div class="column">Но&nbsp;уменьшить шансы заболеть можно, благодаря своевременной профилактике. Например, с&nbsp;помощью препарата Кагоцел. Он&nbsp;может использоваться как для плановой, так и&nbsp;для экстренной профилактики после контакта с&nbsp;человеком, уже болеющим ОРВИ.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n8"></div>В&nbsp;случае болезни ребёнка <br class="ds">следуйте основным правилам
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">Заболевший ребёнок требует особого внимания и&nbsp;ухода. Необходимо поместить ребёнка в&nbsp;отдельную комнату для ограничения контакта со&nbsp;здоровыми членами семьи. Следите за&nbsp;состоянием больного ребёнка, измеряйте температуру тела.</div>
+                      <div class="column">Высокая температура при гриппе&nbsp;&mdash; это защитный механизм, поэтому снижать её&nbsp;не&nbsp;рекомендуется. Проконсультируйтесь с&nbsp;врачом относительно противовирусных и&nbsp;жаропонижающих препаратов для больного ребенка.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n9"></div>Не&nbsp;забывайте о&nbsp;закаливании, прогулках на&nbsp;свежем воздухе и&nbsp;физической активности
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">Закаливание и&nbsp;занятия спортом&nbsp;&mdash; отличный способ укрепить иммунитет в&nbsp;целом. Каждое утро начинайте с&nbsp;прохладного душа, это отлично бодрит и&nbsp;помогает проснуться. Разумно сочетать закаливающие процедуры с&nbsp;зарядкой и&nbsp;физическими упражнениями.</div>
+                      <div class="column">Также повышают иммунитет и&nbsp;обычные прогулки на&nbsp;свежем воздухе. Заведите привычку прогуливаться перед сном и&nbsp;вы&nbsp;удивитесь, как благоприятно она отразиться на&nbsp;качестве сна и&nbsp;вашем общем состоянии.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="advice-slide">
+                <div role="mobile-advice-inner" class="inner">
+                  <div class="inner-content">
+                    <div role="an-advice-slide-title" class="title">
+                      <div class="icon -n10"></div>Помните, что запоздалого лечения <br class="ds">не&nbsp;бывает
+                    </div>
+                    <div role="an-advice-slide-desc" class="desc">
+                      <div class="column">Боль в&nbsp;горле, заложенный красный нос, слезящиеся глаза, ломота в&nbsp;суставах и&nbsp;температура... Что делать? Нужно помнить, что это только симптомы гриппа или других ОРВИ, а&nbsp;бороться нужно с&nbsp;именно с&nbsp;вирусами, а&nbsp;не&nbsp;с&nbsp;головной болью, жаром и&nbsp;лихорадкой. Специально для борьбы с&nbsp;вирусами-возбудителями гриппа и&nbsp;ОРВИ разработан противовирусный препарат Кагоцел.</div>
+                      <div class="column">Его отличительная особенность в&nbsp;том, что препарат применяется как с&nbsp;самых первых симптомов, так и&nbsp;при запоздалом лечении. Даже если начать принимать Кагоцел на&nbsp;3-4 сутки после появления симптомов болезни ― он&nbsp;поможет выздороветь быстрее. Имея высокий профиль безопасности, Кагоцел может быть рекомендован для лечения взрослых и&nbsp;детей с&nbsp;трёх лет.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section data-mobile-screen-eq="3" class="section -collections -mfs">
+        <div class="collections">
+          <div role="an-collection-title" class="section-title ds">Подборки</div>
+          <div class="collections-list">
+            <div role="collections-mobile" class="inner"><a href="https://kudago.com/msk/list/pobazarim-glavnye-rozhdestvenskie-yarmarki/" onclick="ga('send', 'event', 'collections-click', '1', 'on-collections-screen');" target="_blank" role="an-collection-item" class="collection"><span class="image-wrap"><span data-ratio="2.35" style="background-image: url(images/collections/1.jpg);" class="image"></span></span><span class="title">Побазарим? Главные рождественские ярмарки</span><span class="desc">Дух зимних праздников&nbsp;&mdash; это не только подарки под ёлкой, семейные торжества и&nbsp;бой курантов, но&nbsp;и&nbsp;традиционнные народные гуляния.</span><span class="bottom"><span>Читать подробнее...</span></span></a><a href="https://kudago.com/msk/list/ubegi-ot-zimy-10-sposobov-sogretsya/" onclick="ga('send', 'event', 'collections-click', '2', 'on-collections-screen');" target="_blank" role="an-collection-item" class="collection"><span class="image-wrap"><span data-ratio="2.35" style="background-image: url(images/collections/2.jpg);" class="image"></span></span><span class="title">Убеги от&nbsp;зимы: 10&nbsp;способов согреться</span><span class="desc">В&nbsp;Москве можно отыскать немало мест, которые позволяют подпитать изможденный организм свежими эмоциями и&nbsp;физическим теплом, даже когда за&nbsp;окном бушует метель.</span><span class="bottom"><span>Читать подробнее...</span></span></a><a href="https://kudago.com/msk/list/zimnij-put-progulki-po-novogodnej-moskve/" onclick="ga('send', 'event', 'collections-click', '3', 'on-collections-screen');" target="_blank" role="an-collection-item" class="collection"><span class="image-wrap"><span data-ratio="2.35" style="background-image: url(images/collections/3.jpg);" class="image"></span></span><span class="title">Зимний путь: прогулки  по&nbsp;новогодней Москве</span><span class="desc">Зима в&nbsp;Москве&nbsp;&mdash; это  по-настоящему волшебное время. Чтобы попасть в&nbsp;сказку, нужно только выйти из&nbsp;дома.</span><span class="bottom"><span>Читать подробнее...</span></span></a><a href="https://kudago.com/msk/list/katis-davaj-luchshie-katki-moskvy/" onclick="ga('send', 'event', 'collections-click', '4', 'on-collections-screen');" target="_blank" role="an-collection-item" class="collection"><span class="image-wrap"><span data-ratio="2.35" style="background-image: url(images/collections/4.jpg);" class="image"></span></span><span class="title">Катись давай: лучшие катки Москвы</span><span class="desc">Зима&nbsp;&mdash; самое время достать  с антресоли коньки и&nbsp;открыть новый сезон на&nbsp;льду!</span><span class="bottom"><span>Читать подробнее...</span></span></a></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div data-popup="menu" class="mobile-menu mobile-popup"><a href="#" role="favorites-open" onclick="ga('send', 'event', 'button', 'open-favorites', 'on-menu-screen');" class="favorite-places-link"><span class="icon"><img src="images/icon-like.svg" role="svg"></span><span class="text">Любимые места</span></a><a href="#" data-popup-close="menu" class="mobile-popup-close"></a>
+      <div class="mobile-menu-list">
+        <div class="inner">
+          <div class="link"><a href="#" data-show-screen="0">О проекте</a></div>
+          <div class="link"><a href="#" data-show-screen="1">Карта</a></div>
+          <div class="link"><a href="#" data-show-screen="2">Советы</a></div>
+          <div class="link"><a href="#" data-show-screen="3">Подборки</a></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var HINTS = [
+        {
+        title: "Выбирайте гардероб правильно",
+        desc: "Убедитесь, что ваша зимняя одежда достаточно тёплая, непромокаемая и&nbsp;не&nbsp;забудьте о&nbsp;термобелье."
+        },
+        {
+        title: "Помните основы профилактики гриппа и&nbsp;ОРВИ",
+        desc: "Здоровое питание, занятия спортом, приём витамина&nbsp;С и&nbsp;противовирусных препаратов."
+        },
+        {
+        title: "Снижайте стрессовые факторы",
+        desc: "Постарайтесь исключить или снизить до&nbsp;минимума стрессовые факторы, которые ослабляют иммунитет организма и&nbsp;могут привести к&nbsp;развитию ОРВИ."
+        },
+        {
+        title: "Помните об&nbsp;основных симптомах ОРВИ",
+        desc: "быстро нарастающая температура, резкий озноб, головная боль, боли в&nbsp;мышцах и&nbsp;суставах."
+        },
+        {
+        title: "Правильно питайтесь и&nbsp;достаточно пейте",
+        desc: "Для укрепления иммунитета организму необходимы витамины, особенно витамин С."
+        },
+        {
+        title: "Не&nbsp;забывайте о&nbsp;народных средствах",
+        desc: "Чаи, настои, отвары, мёд, молоко, лук и&nbsp;чеснок проверены поколениями людей."
+        },
+        {
+        title: "Знайте &bdquo;врага в&nbsp;лицо&ldquo;",
+        desc: "Узнайте больше о&nbsp;гриппе и&nbsp;ОРВИ, способах заражения и&nbsp;средствах профилактики."
+        },
+        {
+        title: "В&nbsp;случае болезни ребёнка",
+        desc: "следуйте основным правилам: поместите ребёнка в&nbsp;отдельную комнату, следите за&nbsp;состоянием, проконсультируйтесь с&nbsp;врачом."
+        },
+        {
+        title: "Не&nbsp;забывайте о&nbsp;закаливании",
+        desc: "А&nbsp;также о&nbsp;прогулках на&nbsp;свежем воздухе и&nbsp;физической активности."
+        },
+        {
+        title: "Запоздалого лечения не&nbsp;бывает",
+        desc: "Есть препараты, которые помогают даже когда лечение начато с&nbsp;опозданием."
+        }
+      ]
+      var REGIONS = {
+        'CAO': {
+          name: 'ЦАО',
+          mapHeight: 381/(720/100),
+          coords: {
+            top: 55.797084,
+            left: 37.513998,
+            right: 37.713125,
+            bottom: 55.710142,
+          },
+          imageSizes: {
+            w: 1054,
+            h: 1034
+          }
+        },
+        'SAO': {
+          name: 'САО',
+          mapHeight: 500/(720/100),
+          coords: {
+            top: 55.994619,
+            left: 37.334552,
+            right: 37.589917,
+            bottom: 55.759368,
+          },
+          imageSizes: {
+            w: 1240,
+            h: 1754
+          }
+        },
+        'SVAO': {
+          name: 'СВАО',
+          mapHeight: 440/(720/100),
+          coords: {
+            top: 55.957249,
+            left: 37.517785,
+            right: 37.733135,
+            bottom: 55.782295,
+          },
+          imageSizes: {
+            w: 871,
+            h: 1210
+          }
+        },
+        'SZAO': {
+          name: 'СЗАО',
+          mapHeight: 500/(720/100),
+          coords: {
+            top: 55.913630,
+            left: 37.331899,
+            right: 37.520930,
+            bottom: 55.740285,
+          },
+          imageSizes: {
+            w: 1085,
+            h: 1667
+          }
+        },
+        'UAO': {
+          name: 'ЮАО',
+          mapHeight: 442/(720/100),
+          coords: {
+            top: 55.729636,
+            left: 37.572729,
+            right: 37.795889,
+            bottom: 55.570399,
+          },
+          imageSizes: {
+            w: 871,
+            h: 1204
+          }
+        },
+        'UVAO': {
+          name: 'ЮВАО',
+          mapHeight: 442/(720/100),
+          coords: {
+            top: 55.775832,
+            left: 37.659962,
+            right: 37.965519,
+            bottom: 55.622987,
+          },
+          imageSizes: {
+            w: 871,
+            h: 1210
+          }
+        },
+        'UZAO': {
+          name: 'ЮЗАО',
+          mapHeight: 500/(720/100),
+          coords: {
+            top: 55.715894,
+            left: 37.456055,
+            right: 37.615357,
+            bottom: 55.491692,
+          },
+          imageSizes: {
+            w: 986,
+            h: 1651
+          }
+        },
+        'VAO': {
+          name: 'ВАО',
+          mapHeight: 444/(720/100),
+          coords: {
+            top: 55.878683,
+            left: 37.647869,
+            right: 37.945873,
+            bottom: 55.693747,
+          },
+          imageSizes: {
+            w: 871,
+            h: 1210
+          }
+        },
+        'ZAO': {
+          name: 'ЗАО',
+          mapHeight: 422/(720/100),
+          coords: {
+            top: 55.813088,
+            left: 37.178293,
+            right: 37.575174,
+            bottom: 55.581279,
+          },
+          imageSizes: {
+            w: 1411,
+            h: 1162
+          }
+        },
+      }
+      var DB = {
+        categories: {
+          'all': {
+            name: "Зимние места и&nbsp;события",
+            icon: "all.svg",
+            desc: "Новогодние городские события, ёлки и&nbsp;ярмарки. Удивительные места для занятия зимними видами спорта и&nbsp;незабываемой встречи нового года.",
+          },
+          0: {
+            name: "Ёлки",
+            icon: "elka.svg",
+            short_desc: "Незабываемые события",
+            desc: "В&nbsp;городском парке или на&nbsp;крыше высотки, в&nbsp;месте только для двоих или среди тысяч людей, в&nbsp;традиционной атмосфере или в&nbsp;современном антураже&nbsp;&mdash; вы&nbsp;можете встретить Новый год в&nbsp;любом месте. Найдите своё!",
+          },
+          1: {
+            name: "Где встретить Новый год",
+            icon: "ny.svg",
+            short_desc: 'Сотни новых знакомств',
+            desc: "Новый год не&nbsp;бывает без ёлки! Это эпицентр праздничного веселья с&nbsp;хороводами, подарками, игрушками и&nbsp;салютом. Выберите ёлку рядом с&nbsp;вами!",
+          }
+        },
+        places: [
+          {
+            "id": 531,
+            "title": "музей-заповедник «Царицыно»",
+            "address": "ул. Дольская, д. 1",
+            "description": "<p>Царские дворцы в стиле русской готики, чистые пруды... Парк, так и не ставший императорской резиденцией, сегодня открыт для всех, кто хочет найти уголок спокойствия в шумной столице.</p>\n",
+            "coords": {
+              "lon": 37.68393099999999,
+              "lat": 55.61662499999999
+            },
+            "subway": "Царицыно, Орехово",
+            "region": "UAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/41/3d/413d20fbf3a0cab1f8a99feedc893a9c.jpg",
+                "source": {
+                  "name": "Музей-заповедник «Царицыно»",
+                  "link": "http://www.tsaritsyno-museum.ru/ru/progulki/boldvorec/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/41/c4/41c46c9bea21bfa09cbf315a5844e383.jpg",
+                "source": {
+                  "name": "Музей-заповедник «Царицыно»",
+                  "link": "http://www.tsaritsyno-museum.ru/ru/progulki/boldvorec/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/0d/a0/0da021a8627152fe4d1630c41f0426b1.jpg",
+                "source": {
+                  "name": "Музей-заповедник «Царицыно»",
+                  "link": "http://www.tsaritsyno-museum.ru/ru/progulki/boldvorec/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/62/dd/62dd86901fe51cfcce63611981ae50d8.jpg",
+                "source": {
+                  "name": "Музей-заповедник «Царицыно»",
+                  "link": "http://www.tsaritsyno-museum.ru/ru/progulki/boldvorec/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/10/3c/103cb42918c2f1ea9d20533074294371.jpg",
+                "source": {
+                  "name": "Музей-заповедник «Царицыно»",
+                  "link": "http://www.tsaritsyno-museum.ru/ru/progulki/boldvorec/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/1e/60/1e60426626df540e645baa71d4eddce7.jpg",
+                "source": {
+                  "name": "Музей-заповедник «Царицыно»",
+                  "link": "http://www.tsaritsyno-museum.ru/ru/progulki/boldvorec/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/41/3d/413d20fbf3a0cab1f8a99feedc893a9c_1.jpg",
+                "source": {
+                  "name": "Музей-заповедник «Царицыно»",
+                  "link": "http://www.tsaritsyno-museum.ru/ru/progulki/boldvorec/"
+                }
+              }
+            ]
+          },
+          {
+            "id": 522,
+            "title": "Парк Горького, ЦПКИО им. Горького",
+            "address": "Крымский Вал, д. 9",
+            "description": "<p>Несколько лет подряд парк Горького первым в столице открывал ледовое пространство. Этот год не стал исключением — зимняя смена берёт старт 17 ноября. Полный список самых красивых зимних мест ищите в нашем <a href=\"https://kudago.com/msk/new-year/\"><strong>новогоднем спецпроекте</strong></a>.</p>\n",
+            "coords": {
+              "lon": 37.60177113595118,
+              "lat": 55.72962366151958
+            },
+            "subway": "Октябрьская, Парк культуры",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/07/98/0798734327989a7293eee83741720d89.jpg",
+                "source": {
+                  "name": "god2017.com",
+                  "link": "http://god2017.com/novyj-god/meropriyatiya-v-moskve-na-novyj-god-2017"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/57/4b/574bd6e91ca926ac6c3cccbf57eef245.jpg",
+                "source": {
+                  "name": "v2017god.ru",
+                  "link": "http://v2017god.ru/kakogo-chisla-budet-maslenitsa-v-2017-godu.php"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/fb/69/fb69944414c58dc74ad6bfeede0eed35.jpg",
+                "source": {
+                  "name": "kudamoscow.ru",
+                  "link": "http://kudamoscow.ru/event/zimnie-kanikuly-2016-v-parke-gorkogo/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/b3/28/b3287721467e72bc5c2f4e9ce5dba286.jpg",
+                "source": {
+                  "name": "park-gorkogo.com",
+                  "link": "http://park-gorkogo.com/places/124"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/55/2d/552d794afab52904904d45a741b21daf.jpg",
+                "source": {
+                  "name": "kudago.com",
+                  "link": "http://kudago.com/msk/new-year/christmas-sales/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/83/55/83551e962c3bfcf2a94dbed7be174618.jpg",
+                "source": {
+                  "name": "uae.profi.travel",
+                  "link": "http://uae.profi.travel/articles/24433/details"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/37/36/37369966c37d5e15ec4a152221a9750d.jpg",
+                "source": {
+                  "name": "2016.life",
+                  "link": "https://2016.life/%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9-%D0%B3%D0%BE%D0%B4-%D0%B2-%D1%80%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D0%B5"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/b7/d6/b7d6d12e7e2821c9f3d61c71c03d00e3.jpg",
+                "source": {
+                  "name": "kudamoscow.ru",
+                  "link": "http://kudamoscow.ru/event/zimnie-kanikuly-2016-v-parke-gorkogo/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/ea/91/ea91f72272a0d2a05b148561950cca4b.jpg",
+                "source": {
+                  "name": "aljasira-essaouira.com",
+                  "link": "http://aljasira-essaouira.com/?p=9737"
+                }
+              }
+            ]
+          },
+          {
+            "id": 90,
+            "title": "ВДНХ (Выставка достижений народного хозяйства)",
+            "address": "Проспект Мира, д. 119",
+            "description": "<p>Зимой ВДНХ расцветает новыми красками. В этом году здесь можно будет прокатиться на коньках среди арт-объектов, познакомиться с Дедом Морозом в Домике Волшебника и оценить свой творческий потенциал в парке ремёсел. Самый полный список зимних развлечений ищите в <a href=\"https://kudago.com/msk/new-year/\"><strong>новогоднем спецпроекте KudaGo</strong></a>.</p>\n",
+            "coords": {
+              "lon": 37.62648900933927,
+              "lat": 55.83388398661755
+            },
+            "subway": "ВДНХ, Выставочный центр",
+            "region": "SVAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/8a/5f/8a5f2bf907e7cab1cbd46e648fd16293.jpg",
+                "source": {
+                  "name": "misster-tour.ru",
+                  "link": "http://misster-tour.ru/content_bus.php?id=473"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/fb/47/fb474f768057f3471c2d51b3f7d87cd5.jpg",
+                "source": {
+                  "name": "katok.vdnh.ru",
+                  "link": "http://katok.vdnh.ru/news/gostey-glavnogo-katka-strany-v-novom-sezone-zhdut-ezhenedelnaya-zaryadka-na-ldu-i-tantsy-s-kinogeroya/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/c1/75/c175588c44ab2d819a416984642c642f.jpg",
+                "source": {
+                  "name": "katok.vdnh.ru",
+                  "link": "http://katok.vdnh.ru/news/gostey-glavnogo-katka-strany-v-novom-sezone-zhdut-ezhenedelnaya-zaryadka-na-ldu-i-tantsy-s-kinogeroya/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/57/3a/573a470b72b958cfbadc6abd06f0edf0.jpg",
+                "source": {
+                  "name": "katok.vdnh.ru",
+                  "link": "http://katok.vdnh.ru/news/gostey-glavnogo-katka-strany-v-novom-sezone-zhdut-ezhenedelnaya-zaryadka-na-ldu-i-tantsy-s-kinogeroya/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/bf/68/bf6865099de6a3b3f27a3b165ef84d46.jpg",
+                "source": {
+                  "name": "katok.vdnh.ru",
+                  "link": "http://katok.vdnh.ru/news/gostey-glavnogo-katka-strany-v-novom-sezone-zhdut-ezhenedelnaya-zaryadka-na-ldu-i-tantsy-s-kinogeroya/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/ba/6d/ba6d096450a15bc92068dae5d63acb9f.jpg",
+                "source": {
+                  "name": "katok.vdnh.ru",
+                  "link": "http://katok.vdnh.ru/news/gostey-glavnogo-katka-strany-v-novom-sezone-zhdut-ezhenedelnaya-zaryadka-na-ldu-i-tantsy-s-kinogeroya/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/48/2e/482e19659b44ac59750e156ae416746e.jpg",
+                "source": {
+                  "name": "katok.vdnh.ru",
+                  "link": "http://katok.vdnh.ru/eda/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/18/1e/181e4aee6708b2ad8250134ce83170ba.jpg",
+                "source": {
+                  "name": "katok.vdnh.ru",
+                  "link": "http://katok.vdnh.ru/eda/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/78/f0/78f0770cbc64a657859c05b2835d0b29.jpg",
+                "source": {
+                  "name": "hockey-vdnh.ru",
+                  "link": "https://hockey-vdnh.ru/"
+                }
+              }
+            ]
+          },
+          {
+            "id": 3352,
+            "title": "Поклонная гора и Парк Победы",
+            "address": "ул. Братьев Фонченко, 7, Поклонная гора",
+            "description": "<p>Этой зимой на территории мемориального комплекса вновь можно будет увидеть ледовые миниатюры российских городов, скатиться ледяной горы и прогуляться по праздничной ярмарке. Вся палитра новогодних развлечений — в <a href=\"https://kudago.com/msk/new-year/\"><strong>праздничном спецпроекте KudaGo</strong></a>.</p>\n",
+            "coords": {
+              "lon": 37.50624299837779,
+              "lat": 55.73206446375151
+            },
+            "subway": "Парк Победы",
+            "region": "ZAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/86/82/86825df9c5d943f051f0ede436d3d331.jpg",
+                "source": {
+                  "name": "gazeta.ru",
+                  "link": "https://www.gazeta.ru/social/photo/ledovye_skulptury_v_parke_pobedy.shtml#!photo=0&full"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/09/ae/09ae36b053e20dbc08de210db1b3819c.jpg",
+                "source": {
+                  "name": "martin.livejournal.com",
+                  "link": "http://martin.livejournal.com/438802.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/bd/61/bd6167e450ddad3824f47f48c55dacfe.jpg",
+                "source": {
+                  "name": "martin.livejournal.com",
+                  "link": "http://martin.livejournal.com/438802.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/ef/45/ef45183abd937fa0aaed513b5ab22744.jpg",
+                "source": {
+                  "name": "martin.livejournal.com",
+                  "link": "http://martin.livejournal.com/438802.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/63/b4/63b413e9d84c1d82690100df066774b6.jpg",
+                "source": {
+                  "name": "martin.livejournal.com",
+                  "link": "http://martin.livejournal.com/438802.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/63/b9/63b9f96190ba4eaef73b19e4c1658ad7.jpg",
+                "source": {
+                  "name": "facebook.com",
+                  "link": "https://www.facebook.com/poklon.gora/photos_stream"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/d6/dc/d6dce45a28ab25c1af2dded6a0018104.jpg",
+                "source": {
+                  "name": "facebook.com",
+                  "link": "https://www.facebook.com/poklon.gora/photos_stream"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/66/cb/66cb7e1860debde143296ddb66a76108.jpg",
+                "source": {
+                  "name": "facebook.com",
+                  "link": "https://www.facebook.com/poklon.gora/photos_stream"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/e6/e7/e6e723e42a6dc8e020b0bd0ea8b5d7c9.jpg",
+                "source": {
+                  "name": "facebook.com",
+                  "link": "https://www.facebook.com/poklon.gora/photos_stream"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/f2/b6/f2b6d553e8e70b55b4eba4e605ef5e64.jpg",
+                "source": {
+                  "name": "facebook.com",
+                  "link": "https://www.facebook.com/poklon.gora/photos_stream"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/87/55/87554a3deb9269750b129f6acd278ed6.jpg",
+                "source": {
+                  "name": "facebook.com",
+                  "link": "https://www.facebook.com/poklon.gora/photos_stream"
+                }
+              }
+            ]
+          },
+          {
+            "id": 6398,
+            "title": "Красная площадь",
+            "address": "пл. Красная",
+            "description": "<p>Красная площадь является главным символом Москвы, это одна из первых вещей, о которых вспоминает не только житель страны, но и каждый турист, когда речь заходит о столице России.</p>\n",
+            "coords": {
+              "lon": 37.62090499999998,
+              "lat": 55.75358499999997
+            },
+            "subway": "Охотный ряд, Площадь Революции",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/68/51/6851d1f6605eb0d48ca13d8fd1890101.jpg",
+                "source": {
+                  "name": "youtube.com",
+                  "link": "http://www.youtube.com/watch?v=2-jTzc4HA2I"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/0a/a7/0aa715ac42402b500100a6a5a5557662.jpg",
+                "source": {
+                  "name": "wikipedia.org",
+                  "link": "http://ru.wikipedia.org/wiki/%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%87%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8_%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D1%8B"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/74/aa/74aada7249f5f28677ca27354867777e.jpg",
+                "source": {
+                  "name": "red-square.ru/",
+                  "link": "http://www.red-square.ru/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/a0/25/a025ccc1e667baa7e07ebf66cfe428f5.jpg",
+                "source": {
+                  "name": "bibliotekar.ru",
+                  "link": "http://www.bibliotekar.ru/k87-Alekseev/index.htm"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/9a/35/9a3536761149081bd50ac9428de861f6.jpg",
+                "source": {
+                  "name": "osd.ru",
+                  "link": "http://www.osd.ru/objinf.asp?ob=1088"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/af/cf/afcfc11b44a22d92bbd3a9611583943b.jpg",
+                "source": {
+                  "name": "wikipedia.org",
+                  "link": "http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D0%BD%D0%BE%D1%81_%D1%81%D1%82%D0%BE%D0%BB%D0%B8%D1%86%D1%8B_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8_%D0%B8%D0%B7_%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D1%8"
+                }
+              }
+            ]
+          },
+          {
+            "id": 610,
+            "title": "Crocus City Hall",
+            "address": "66 км МКАД, МВЦ «Крокус Экспо», Павильон №3",
+            "description": "<p>Главная отличительная особенность Crocus City Hall — легкость, с которой концертный зал трансформируется под нужды любого события от светского раута до театральной постановки.</p>\n",
+            "coords": {
+              "lon": 37.38919537036275,
+              "lat": 55.82653896860352
+            },
+            "subway": "Мякинино, Строгино",
+            "region": "SZAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/f0/09/f009ca0988e4d274f9f6625a162023f6.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/e1/4e/e14ea3c7eb70746c227be29156280a19.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/9f/7a/9f7a23d84222d6c23ccd3845cc77607e.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              }
+            ]
+          },
+          {
+            "id": 134,
+            "title": "Олимпийский комплекс «Лужники»",
+            "address": "Лужнецкая набережная, д. 24",
+            "description": "<p>Крупнейший спортивно-развлекательный комплекс Москвы и один из лучших в мире.</p>\n",
+            "coords": {
+              "lon": 37.553827999999996,
+              "lat": 55.71474399999995
+            },
+            "subway": "Спортивная",
+            "region": "ЦАО",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/0c/23/0c2392180ecc27a822c89ff32bc25867.jpg",
+                "source": {
+                  "name": "24smi.org",
+                  "link": "http://24smi.org/article/22377-samyj-bolshoj-stadion-v-mire.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/eb/5e/eb5e1755985d3c81ea78076aa780a6bc.JPG",
+                "source": {
+                  "name": "baikal24-sport.ru",
+                  "link": "http://baikal24-sport.ru/text/1657"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/2f/f6/2ff6805bc33773c17776e5a2252a4a4a.jpg",
+                "source": {
+                  "name": "f-rooms.ru",
+                  "link": "http://www.f-rooms.ru/putevoditel-po-moskve/stadiony/luzhniki.html"
+                }
+              }
+            ]
+          },
+          {
+            "id": 2033,
+            "title": "Театр кукол имени С. В. Образцова",
+            "address": "ул. Садовая-Самотечная,  д. 3",
+            "description": "<p>Театр кукол им. С. Образцова — пожалуй, самый известный кукольный театр в России и, кроме того, самый большой в мире. Дети обожают даже здание театра, вернее, кукольные часы на нем: каждый час окошечки на часах открываются, и в них появляются сказочные персонажи.</p>\n",
+            "coords": {
+              "lon": 37.614481999999974,
+              "lat": 55.774167999999946
+            },
+            "subway": "Цветной бульвар, Сухаревская, Маяковская",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/89/87/8987086d6f5ce98aede4b41241fefd65.jpg",
+                "source": {
+                  "name": "1-tour.ru",
+                  "link": "http://1-tour.ru/2140"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/d4/94/d494b5236d0ef1924248f60c0677f603.jpg",
+                "source": {
+                  "name": "restlook.ru",
+                  "link": "http://restlook.ru/places/attractions/gosudarstvennyy-akademicheskiy-tsentralnyy-teatr-kukol-imeni-s-v-obraztsova/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/b5/18/b5187f10c97489040497d94e93c5b31a.jpg",
+                "source": {
+                  "name": "restlook.ru",
+                  "link": "http://restlook.ru/places/attractions/gosudarstvennyy-akademicheskiy-tsentralnyy-teatr-kukol-imeni-s-v-obraztsova/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/94/e4/94e4b2a8c26e0e595b1a734f49b9607a.jpg",
+                "source": {
+                  "name": "restlook.ru",
+                  "link": "http://restlook.ru/places/attractions/gosudarstvennyy-akademicheskiy-tsentralnyy-teatr-kukol-imeni-s-v-obraztsova/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/ce/20/ce207575d6d6610a737a64e48c246605.jpg",
+                "source": {
+                  "name": "mn.ru",
+                  "link": "http://www.mn.ru/moscow/20140228/371025872.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/5b/d8/5bd8cef4fe0013ae470cfea02984ba42.jpg",
+                "source": {
+                  "name": "mn.ru",
+                  "link": "http://www.mn.ru/moscow/20140228/371025872.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/9c/d1/9cd1d37e1a927780f4ddd7749d62a62a.jpg",
+                "source": {
+                  "name": "mn.ru",
+                  "link": "http://www.mn.ru/moscow/20140228/371025872.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/a0/35/a035ff49b72f05beb38dc0bbcb1b600b.jpg",
+                "source": {
+                  "name": "restlook.ru",
+                  "link": "http://restlook.ru/places/attractions/gosudarstvennyy-akademicheskiy-tsentralnyy-teatr-kukol-imeni-s-v-obraztsova/#photo"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/e9/1d/e91d04c549ad00ed655abaccc965e4f7.jpg",
+                "source": {
+                  "name": "restlook.ru",
+                  "link": "http://restlook.ru/places/attractions/gosudarstvennyy-akademicheskiy-tsentralnyy-teatr-kukol-imeni-s-v-obraztsova/#photo"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/d5/01/d5016fa366ca33d41d33e76118eabe77.jpg",
+                "source": {
+                  "name": "restlook.ru",
+                  "link": "http://restlook.ru/places/attractions/gosudarstvennyy-akademicheskiy-tsentralnyy-teatr-kukol-imeni-s-v-obraztsova/#photo"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/0e/87/0e87dffee481a860221fb1a69fb02ac5.jpg",
+                "source": {
+                  "name": "restlook.ru",
+                  "link": "http://restlook.ru/places/attractions/gosudarstvennyy-akademicheskiy-tsentralnyy-teatr-kukol-imeni-s-v-obraztsova/#photo"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/b9/f0/b9f0ac524827e1956d6822de6c973339.jpg",
+                "source": {
+                  "name": "restlook.ru",
+                  "link": "http://restlook.ru/places/attractions/gosudarstvennyy-akademicheskiy-tsentralnyy-teatr-kukol-imeni-s-v-obraztsova/#photo"
+                }
+              }
+            ]
+          },
+          {
+            "id": 1208,
+            "title": "Цирк Никулина на Цветном бульваре",
+            "address": "Цветной бульвар, д. 13",
+            "description": "<p>Самый старый цирк в нашей стране, известный и далеко за ее пределами. Именно здесь работают и представляют свои номера сильнейшие мастера циркового искусства.</p>\n",
+            "coords": {
+              "lon": 37.62001600000001,
+              "lat": 55.77057799999999
+            },
+            "subway": "Цветной Бульвар",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/35/2b/352bfecffa2271d577ab9f31ddace20d.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-13921938_146121916"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/2e/5f/2e5ffd481a6b1c723d4087201ffa6922.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-13921938_105831518"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/68/35/683594749cdae89b94fd3970430426e6.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-13921938_146121916"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/8b/d7/8bd725b6564784ede8e0d30898943bc6.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-13921938_153516668"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/fd/0b/fd0b02a7e9b8695f1e7935d475671d2b.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-13921938_153516668"
+                }
+              }
+            ]
+          },
+          {
+            "id": 4086,
+            "title": "Московский драматический театр под руководством Армена Джигарханяна",
+            "address": "пр. Ленинский, д. 17",
+            "description": "<p>Театр, созданный народным артистом СССР Арменом Джигарханяном. В репертуаре — спектакли как классиков (Гоголя, Чехова), так и современных авторов. Каждый год театр выпускает 3-4 премьерных постановки.</p>\n",
+            "coords": {
+              "lon": 37.54053299999999,
+              "lat": 55.689781
+            },
+            "subway": "Университет",
+            "region": "ЮЗАО",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/ba/83/ba83121eee8a69722242c7a33bfee171.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-35888702_153577852"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/e0/1d/e01d52245db3ff9c05d9864abb7d30d2.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-35888702_153289060"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/96/04/96042c2d77d3f808f0417ef0ef178734.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-35888702_153340086"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/a6/c1/a6c1cd87208255324a56234950d2c354.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-35888702_153577852"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/0e/c8/0ec8d70c26a947ce42c53244274cec37.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-35888702_153577939"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/44/6a/446aa8f375d9d5e5bdd10bb4fb0ae0f5.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-35888702_166182914"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/99/2f/992f013c4b5b5dd27a7d48e8caa2882e.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-35888702_210824578"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/64/1a/641a0ce184de75b88eb11fb4a60a82d5.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "https://vk.com/album-35888702_213407063"
+                }
+              }
+            ]
+          },
+          {
+            "id": 3416,
+            "title": "Государственный Кремлевский Дворец",
+            "address": "Кремль, Государственный Кремлевский Дворец",
+            "description": "<p>Одна из лучших сценических площадок мира, символ советской эпохи, место проведения грандиозных концертов и реализации культурных проектов всероссийского масштаба.</p>\n",
+            "coords": {
+              "lon": 37.61555772700333,
+              "lat": 55.75144548015619
+            },
+            "subway": "Александровский сад",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/0b/35/0b35cb29884344e24bccae34fb476b34.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/cb/bf/cbbfcf46accd7692f0ac26e9850c544a.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/93/34/9334a07ea5404c7069cfbb2f83be10e1.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/10/c8/10c875e7d4c1a87289fb584d9fd96462.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/27/4b/274be9971f2eab0748f279eedd5f0576.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/35/14/351464644ab57171be32cf7f89082be3.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/da/77/da77ef79b57382ea664911f7ab9c8fb9.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              }
+            ]
+          },
+          {
+            "id": 3460,
+            "title": "Театрально-культурный центр имени Вс. Мейерхольда",
+            "address": "ул. Новослободская, д. 23",
+            "description": "<p>Центр носит имя режиссера-новатора, революционера театрального искусства и вечного искателя сценических приключений Всеволода Мейерхольда.</p>\n",
+            "coords": {
+              "lon": 37.598528,
+              "lat": 55.78139299999999
+            },
+            "subway": "Менделеевская",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/37/62/3762a187c307060f6e79dd2cbfd6e97b.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "http://vk.com/meyerholdcenter"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/8e/55/8e555194aea00f9f81b047d17c5f04ed.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "http://vk.com/meyerholdcenter"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/1a/90/1a90147c48b7e66af6606cbdad5d35ce.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "http://vk.com/meyerholdcenter"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/51/c9/51c9d0f68d684e2698a55b74529ec92b.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "http://vk.com/meyerholdcenter"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/80/7b/807b8c0ec2639fc69e2febb0956502dc.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "http://vk.com/meyerholdcenter"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/6e/6d/6e6dfe36c82d01bd2eda770de8e02ac5.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "http://vk.com/meyerholdcenter"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/e6/54/e6546d5b2498fbe145e8208caaf0b52b.jpg",
+                "source": {
+                  "name": "vk.com",
+                  "link": "http://vk.com/meyerholdcenter"
+                }
+              }
+            ]
+          },
+          {
+            "id": 745,
+            "title": "Московский международный Дом музыки (ММДМ)",
+            "address": "Космодамианская наб., 52, стр. 8",
+            "description": "<p>Московский международный Дом музыки — это крупнейшее в современной России пространство камерной и симфонической музыки, спланированное в соответствии с требованиями высокого искусства.</p>\n",
+            "coords": {
+              "lon": 37.64659699999999,
+              "lat": 55.73324899999993
+            },
+            "subway": "Павелецкая",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/15/59/15596b6ff4548f2ba6ddf9df774b2663.jpg",
+                "source": {
+                  "name": "classicalmusicnews.ru",
+                  "link": "http://www.classicalmusicnews.ru/anons/evgeniiy-mironov-i-yuriiy-bashmet-primut-uchastie-v-blagotvoritel-nom-koncerte-posvyashenie/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/f5/46/f546c9fb4e5b099ced1982910312429f.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/83/e2/83e23f47ca515adaa8e2dba097361d1e.jpg",
+                "source": {
+                  "name": "antonb.ru",
+                  "link": "http://antonb.ru/2013/10/01/moskovskij-mezhdunarodnyj-dom-muzyki/"
+                }
+              }
+            ]
+          },
+          {
+            "id": 15132,
+            "title": "Гостиный Двор",
+            "address": "ул. Ильинка, д.4",
+            "description": "<p>Целый квартал в самом центре Москвы занимает Гостиный Двор, являющийся одним из наиболее древних и примечательных историко-архитектурных памятников столицы.</p>\n",
+            "coords": {
+              "lon": 37.624965,
+              "lat": 55.75436999999995
+            },
+            "subway": "Китай-город, Охотный ряд, Площадь Революции",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/19/36/1936f07a0367b37b7a2eafcfba942512.JPG",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/19/36/1936f07a0367b37b7a2eafcfba942512.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/19/36/1936f07a0367b37b7a2eafcfba942512_1.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/19/36/1936f07a0367b37b7a2eafcfba942512_2.jpg",
+                "source": {
+                  "name": "",
+                  "link": ""
+                }
+              }
+            ]
+          },
+          {
+            "id": 11904,
+            "title": "Дом союзов",
+            "address": "ул. Большая Дмитровка, д. 1",
+            "description": "<p>Здание, носящее сегодня название Дом союзов, было построено в восемнадцатом столетии, но и сейчас оно смотрится величественно, являясь одной из жемчужин старой Москвы.</p>\n",
+            "coords": {
+              "lon": 37.61644000000001,
+              "lat": 55.758923999999986
+            },
+            "subway": "Охотный ряд, Площадь Революции",
+            "region": "CAO",
+            "images": [
+              {
+                "image": "https://kudago.com/media/images/place/8e/18/8e18d49bd9d5fe9437539dde3bd026b1.jpg",
+                "source": {
+                  "name": "vokrugsveta.ru",
+                  "link": "http://www.vokrugsveta.ru/photo/image/4763/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/9a/7d/9a7d61fd726ef84664b67527eb56f768.jpg",
+                "source": {
+                  "name": "100dorog.ru",
+                  "link": "http://100dorog.ru/guide/sightseeing/6616678/"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/ff/b6/ffb6c6d30ef7a79872b9c45f202738ed.jpg",
+                "source": {
+                  "name": "liveinmsk.ru",
+                  "link": "http://liveinmsk.ru/places/a-173.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/d8/29/d82957414528e50edf7eae0919d4d95e.jpg",
+                "source": {
+                  "name": "domsojuzov.ru",
+                  "link": "http://www.domsojuzov.ru/foto.html"
+                }
+              },
+              {
+                "image": "https://kudago.com/media/images/place/64/bc/64bc357d6b0e5f5f36fc4eeaaaf9addc.jpg",
+                "source": {
+                  "name": "placevisor.com",
+                  "link": "http://placevisor.com/biz/kolonnyjj-zal-doma-soyuzov-moskva"
+                }
+              }
+            ]
+          }
+        ],
+        events: [
+        {
+          "id": 134854,
+          "title": "новогодние гулянья в районе Поклонной горы 2017",
+          "category": 1,
+          "place": {
+            "id": 3352
+          },
+          "tags": [
+            "новый год 2017",
+            "новогодняя ночь",
+            "праздники",
+            "новогодние развлечения",
+            "новогодние ярмарки",
+            "новый год с детьми",
+            "free",
+            "ярмарки (развлечения, ярмарки)"
+          ],
+          "description": "<p>Новогодняя ярмарка, миниатюрная ледяная Москва, развесёлые зимние забавы наших предков — декабрьские и январские деньки в Парке Победы и на Поклонной горе будут по-настоящему снежными и душевными!</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/0e/d5/0ed5a7ab00ef6c2239dc509328b2f3ae.jpg",
+              "source": {
+                "link": "http://www.m24.ru/articles/62756",
+                "name": "m24.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/76/6d/766dd4d096ec72d8bf5511efebd46ef1.jpg",
+              "source": {
+                "link": "",
+                "name": ""
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novogodnie-gulyanya-v-rajone-poklonnoj-gory-2017/"
+        },
+        {
+          "id": 134821,
+          "title": "Новый год 2017 на Красной площади",
+          "category": 1,
+          "place": {
+            "id": 6398
+          },
+          "tags": [
+            "зимняя карта москвы",
+            "новый год 2017",
+            "новогодняя ночь",
+            "праздники",
+            "новогодние концерты",
+            "free"
+          ],
+          "description": "<p>Встречать один из самых любимых российских праздников в столь знаковом месте стало традицией для многих москвичей и гостей города. Если вы тоже хотите ощутить ликование тысяч людей, приходите на Красную площадь!</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/b4/08/b408ca8136cb68d840d8f5fedfc37660.jpg",
+              "source": {
+                "link": "http://newyearland.ru/%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9-%D0%B3%D0%BE%D0%B4-%D0%BD%D0%B0-%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D0%B9-%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D0%B8/",
+                "name": "newyearland.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/77/93/7793a4864af65384fdc32e15f366d3b4.jpg",
+              "source": {
+                "link": "http://www.vestikavkaza.ru/pvk/sobitiya/krasnaya-ploshtady-budet-zakrita-na-noviy-god",
+                "name": "vestikavkaza.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/c0/c4/c0c463b84ba7b31de3e66f69f08bc0e2.jpg",
+              "source": {
+                "link": "https://2016.life/%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9-%D0%B3%D0%BE%D0%B4-%D0%B2-%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B5",
+                "name": "2016.life"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/0d/a5/0da513edefa9ed9c0a778291db4978c9.jpg",
+              "source": {
+                "link": "https://2016.life/%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9-%D0%B3%D0%BE%D0%B4-%D0%B2-%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B5",
+                "name": "2016.life"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novyj-god-2017-na-krasnoj-ploshadi/"
+        },
+        {
+          "id": 134826,
+          "title": "Новый Год в парке Горького",
+          "category": 1,
+          "place": {
+            "id": 522
+          },
+          "tags": [
+            "новый год 2017",
+            "игры (развлечения)",
+            "новогодняя ночь",
+            "праздники",
+            "игры",
+            "новогодние ярмарки",
+            "free",
+            "новогодние места"
+          ],
+          "description": "<p>Приветливые незнакомцы, весёлая суета, салюты, музыка, объятия — новогоднюю эйфорию не сравнить ни с чем! Если в самый волшебный праздник дома не сидится, то одевайтесь потеплее, собирайте компанию и отправляйтесь на гулянья в Парк Горького.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/1d/c9/1dc9654d82c9d8ecbc89f326727c40b4.jpg",
+              "source": {
+                "link": "http://park-gorkogo.com/multimedia/photo/118",
+                "name": "park-gorkogo.com"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/ae/f5/aef5f5c908be031924b5dc74670ba5dd.jpg",
+              "source": {
+                "link": "http://ottenki-serogo.livejournal.com/241123.html",
+                "name": "Livejournal.com"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novyj-god-v-parke-gorkogo/"
+        },
+        {
+          "id": 134866,
+          "title": "новогодний праздник в Царицыно",
+          "category": 1,
+          "place": {
+            "id": 531
+          },
+          "tags": [
+            "новый год 2017",
+            "новогодняя ночь",
+            "праздники",
+            "новогодние развлечения",
+            "новогодние ярмарки",
+            "ярмарки (развлечения, ярмарки)"
+          ],
+          "description": "<p>Новый год в Царицыно — это театральные представления, душевное общение, ярмарки и подарки, и всё действо происходит в атмосфере придворного праздника!</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/a3/42/a3424e8e169e7f86c3c819702798a3fc.jpg",
+              "source": {
+                "link": "http://photocentra.ru/work/557341",
+                "name": "photocentra.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/07/b3/07b3b3bf00a5e9962dc057413fe92aa8.jpg",
+              "source": {
+                "link": "http://www.osd.ru/onephoto.asp?id=32779&cl=2",
+                "name": "osd.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/3d/d9/3dd98852fe8a20a8860c8bc39dd3de16.jpg",
+              "source": {
+                "link": "http://www.culture.ru/events/67800/novogodnie-elki-v-muzee-tsaritsino",
+                "name": "culture.ru"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novogodnij-prazdnik-v-caricyno/"
+        },
+        {
+          "id": 134839,
+          "title": "новогодние гулянья в Москве на ВДНХ 2017",
+          "category": 1,
+          "place": {
+            "id": 90
+          },
+          "tags": [
+            "новый год 2017",
+            "праздники",
+            "новогодние ярмарки",
+            "free",
+            "новогодние места",
+            "ярмарки (развлечения, ярмарки)"
+          ],
+          "description": "<p>Новый год приближается, и на ВДНХ подготовка идёт вовсю! Совсем скоро зашумит развесёлая ярмарка, лёд на большом катке заскрипит под быстрыми коньками, а дерево желаний зажжёт волшебные огоньки!</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/35/01/3501d1289cdde1a52d1e99df92fcd32c.jpg",
+              "source": {
+                "link": "http://www.yamoskva.com/node/14717",
+                "name": "yamoskva.com"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/48/71/4871bd7d8e7cbe91dad7fe7a99e9d234.jpg",
+              "source": {
+                "link": "http://ideagram.ru/meropriyatiya-na-novyy-god-2017-v-moskve#top4",
+                "name": "http://ideagram.ru/"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novogodnie-gulyanya-v-moskve-na-vdnh-2017/"
+        },
+        {
+          "id": 134600,
+          "title": "новогодняя ёлка в Московском международном Доме музыки",
+          "category": 0,
+          "place": {
+            "id": 745
+          },
+          "tags": [
+            "детские (раздел детям)",
+            "новый год с детьми",
+            "шоу (развлечения)",
+            "шоу",
+            "новогодние спектакли"
+          ],
+          "description": "<p>Праздничный интерактивный спектакль «Барбоскины, или тайна книжной полки» превратит новогоднюю ёлку вашего ребёнка в волшебное путешествие, где живут прекрасные книги, удивительные герои и захватывающие сказки.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/d3/be/d3be09e79ae8550184e85b54621a7766.jpg",
+              "source": {
+                "link": "http://kino-filmi.net/601-barboskiny-vse-serii.html",
+                "name": "kino-filmi.net"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novogodnyaya-yolka-v-moskovskom-mezhdunarodnom-dom/"
+        },
+        {
+          "id": 136564,
+          "title": "спектакль «Щелкунчик» в Театре кукол им. С. В. Образцова",
+          "category": 0,
+          "place": {
+            "id": 2033
+          },
+          "tags": [
+            "спектакль",
+            "новый год с детьми",
+            "премьера",
+            "кукольные",
+            "детские (раздел детям)",
+            "6+",
+            "куклы",
+            "детские спектакли",
+            "театр (спектакли, опера, балет итд)",
+            "новогодние спектакли"
+          ],
+          "description": "<p>Уютная, камерная постановка погрузит в атмосферу волшебства — заснеженные домики окутает нежными кружевами рождественская ночь, за крохотными резными окошками зажжется свет, куклы оживут, неуклюжий зубастый Щелкунчик превратится в прекрасного принца.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/e5/89/e589a65f0bb050b4289760e127fd93c6.jpg",
+              "source": {
+                "link": "http://puppet.ru/repertuar/schelkunchik",
+                "name": "puppet.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/22/4f/224f23bbf84f2662179da69c7833bb35.jpg",
+              "source": {
+                "link": "http://puppet.ru/repertuar/schelkunchik",
+                "name": "puppet.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/82/41/8241a5a08da76b6fa1cff1d92fb17ddf.jpg",
+              "source": {
+                "link": "http://puppet.ru/repertuar/schelkunchik",
+                "name": "puppet.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/c4/1e/c41e075806dd435bce1f35d1dea1308d.jpg",
+              "source": {
+                "link": "http://puppet.ru/repertuar/schelkunchik",
+                "name": "puppet.ru"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/spektakl-shelkunchik-v-teatre-obrazcova/"
+        },
+        {
+          "id": 132152,
+          "title": "ледовое шоу «Алиса в Зазеркалье»",
+          "category": 0,
+          "place": {
+            "id": 134
+          },
+          "tags": [
+            "новогодние спектакли",
+            "6+",
+            "льюис кэролл",
+            "шоу",
+            "детские спектакли",
+            "детские (раздел детям)",
+            "шоу (развлечения)"
+          ],
+          "description": "<p>Знаменитый сказочный сюжет и фантастические спецэффекты, танцы на льду и потрясающая музыка — необычная и современная трактовка «Алисы в Зазеркалье» в формате ледового шоу.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/31/ad/31ad8bb021a196be00148860d420aabe.jpg",
+              "source": {
+                "link": "",
+                "name": ""
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/1e/39/1e392e35b719c8b4689790254c77e808.jpg",
+              "source": {
+                "link": "",
+                "name": ""
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/21/cd/21cdab36cee379141151dec0ac43c953.jpg",
+              "source": {
+                "link": "",
+                "name": ""
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/f6/11/f611fde7b7dd6cde59a4d5ed6dd932a9.jpg",
+              "source": {
+                "link": "",
+                "name": ""
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/36/bd/36bde92ae05a5d9ca63f1372c793ba9e.jpg",
+              "source": {
+                "link": "",
+                "name": ""
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/ledovoe-shou-alisa-v-zazerkale/"
+        },
+        {
+          "id": 136515,
+          "title": "новогоднее представление в Театре под руководством Армена Джигарханяна",
+          "category": 0,
+          "place": {
+            "id": 4086
+          },
+          "tags": [
+            "новогодние спектакли",
+            "дед мороз",
+            "театр (спектакли, опера, балет итд)",
+            "спектакль",
+            "детские спектакли",
+            "драматические постановки",
+            "детские (раздел детям)",
+            "интерактивный спектакль",
+            "малыши"
+          ],
+          "description": "<p>Под новый год артисты театра готовят детям сюрприз: встречу сразу со всеми сказочными героями, с которыми ребята успели познакомиться на сцене театра за прошедший год.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/f5/ad/f5ad2559339ac3b6468d9c11950922d7.jpg",
+              "source": {
+                "link": "http://www.dzigartheater.ru/repertoire/performances.php?ELEMENT_ID=359",
+                "name": "dzigartheater.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/cc/97/cc971b94f2a8a88eb4c3d9f1e206f952.jpg",
+              "source": {
+                "link": "http://www.dzigartheater.ru/repertoire/performances.php?ELEMENT_ID=359",
+                "name": "dzigartheater.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/d6/5c/d65c648aedf29e31167c070eb2adef0f.jpg",
+              "source": {
+                "link": "http://www.dzigartheater.ru/repertoire/performances.php?ELEMENT_ID=359",
+                "name": "dzigartheater.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/fc/24/fc2487fddb8c30d8c2cd6757546e67de.jpg",
+              "source": {
+                "link": "http://www.dzigartheater.ru/repertoire/performances.php?ELEMENT_ID=359",
+                "name": "dzigartheater.ru"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novogodnee-predstavlenie-v-teatre-dzhigarhaniana/"
+        },
+        {
+          "id": 134606,
+          "title": "новогодняя ёлка в Гостином дворе",
+          "category": 0,
+          "place": {
+            "id": 15132
+          },
+          "tags": [
+            "новогодние спектакли",
+            "новый год с детьми",
+            "цирковые представления",
+            "шоу",
+            "детские (раздел детям)",
+            "новогодние концерты",
+            "цирковые представления (развлечения)"
+          ],
+          "description": "<p>Московский Гостиный двор приглашает ребят и их родителей на красочное новогоднее представление «Смешарики в Китае», во время которого любимые герои известного мультсериала и цирковые артисты поразят воображение зрителей!</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/22/c5/22c5b2b7a25c67ad1108ac2e2543c5b7.jpg",
+              "source": {
+                "link": "http://www.liepa.ru/fotoalbom-novogodnie-prklyucheniya-smesharikoa-v-kitae-elena-pushkina/",
+                "name": "liepa.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/af/b6/afb6765b04c24919dd00855c091c36f1.jpg",
+              "source": {
+                "link": "http://www.liepa.ru/fotoalbom-novogodnie-prklyucheniya-smesharikoa-v-kitae-elena-pushkina/",
+                "name": "liepa.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/20/11/20114f605cd8c31b5b9dce60d62b11fa.jpg",
+              "source": {
+                "link": "http://www.liepa.ru/fotoalbom-novogodnie-prklyucheniya-smesharikoa-v-kitae-elena-pushkina/",
+                "name": "liepa.ru"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novogodnyaya-yolka-v-gostinom-dvore/"
+        },
+        {
+          "id": 26431,
+          "title": "спектакль «История одного чуда»",
+          "category": 0,
+          "place": {
+            "id": 3460
+          },
+          "tags": [
+            "новый год с детьми",
+            "новогодние спектакли",
+            "6+",
+            "театр (спектакли, опера, балет итд)",
+            "спектакль",
+            "детские спектакли",
+            "детские (раздел детям)",
+            "экспериментальный театр",
+            "интерактивный спектакль"
+          ],
+          "description": "<p>Одно из самых важных событий в истории человечества — рождение Иисуса Христа, представленное в формате волшебного «настольного» спектакля для детей.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/b7/54/b75491e70cfd38692c7842f937903c77.jpg",
+              "source": {
+                "link": "http://meyerhold.ru/istoriya-odnogo-chuda/",
+                "name": "meyerhold.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/ac/5d/ac5d23321ac1089ca5fe1d710434a303.jpg",
+              "source": {
+                "link": "http://meyerhold.ru/istoriya-odnogo-chuda/",
+                "name": "meyerhold.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/fa/54/fa5475a8d08da8654bfa9f44acbb36d5.jpeg",
+              "source": {
+                "link": "http://meyerhold.ru/istoriya-odnogo-chuda/",
+                "name": "meyerhold.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/08/fc/08fc28a411be9cf4f781372fc2a8a14d.jpg",
+              "source": {
+                "link": "http://meyerhold.ru/istoriya-odnogo-chuda/",
+                "name": "meyerhold.ru"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/spektakl-istoriya-odnogo-chuda-msk/"
+        },
+        {
+          "id": 134572,
+          "title": "новогодняя ёлка в Колонном зале Дома союзов",
+          "category": 0,
+          "place": {
+            "id": 11904
+          },
+          "tags": [
+            "новогодние спектакли",
+            "новый год с детьми",
+            "детские (раздел детям)",
+            "шоу",
+            "шоу (развлечения)"
+          ],
+          "description": "<p>В великолепных интерьерах знаменитого Колонного зала удивлять и радовать ребят в этом году будут неизменные зимние гости — Дед Мороз и Снегурочка в компании Кота в сапогах и многих других незабываемых сказочных героев.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/da/35/da35176720d572335618d2d9d4b41eca.jpg",
+              "source": {
+                "link": "https://www.youtube.com/watch?v=qvWyV4r0FMI",
+                "name": "youtube.com"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/a2/ed/a2edd634baf70eb215875dc8066423d5.jpg",
+              "source": {
+                "link": "http://supercar.ru/news/volkswagen-centre-varshavka/childrens-new-year-party-visiting-santawagen-2014/",
+                "name": "supercar.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/ec/e6/ece6350d998558e46d14c8572371af46.jpg",
+              "source": {
+                "link": "http://ldprchel.ru/sitenews/novogodnyaya_elka_dlya_detey-sirot/",
+                "name": "ldprchel.ru"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novogodnyaya-yolka-v-kolonnom-zale-doma-soyuzov/"
+        },
+        {
+          "id": 134531,
+          "title": "Кремлёвская ёлка 2017",
+          "category": 0,
+          "place": {
+            "id": 3416
+          },
+          "tags": [
+            "новый год с детьми",
+            "новогодние развлечения",
+            "зимняя карта москвы",
+            "шоу",
+            "детские (раздел детям)",
+            "шоу (развлечения)"
+          ],
+          "description": "<p>На самой главной ёлке страны по традиции маленькие гости перенесутся в атмосферу зимней сказки, встретятся с любимыми сказочными персонажами, примут участие в завораживающей театрализованной программе с играми и танцами, а также получат сладкие подарки!</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/e3/0f/e30fac74b145f3b8789c7add05612807.jpg",
+              "source": {
+                "link": "http://www.kremlevskaya-elka.mtuf.ru/",
+                "name": "kremlevskaya-elka.mtuf.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/76/12/76127a1149ee7a92433747dfe4b3aab5.jpg",
+              "source": {
+                "link": "http://www.kremlevskaya-elka.mtuf.ru/",
+                "name": "kremlevskaya-elka.mtuf.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/ae/59/ae59a26433cc66f5eeefa4477f7ec598.jpg",
+              "source": {
+                "link": "http://www.kremlevskaya-elka.mtuf.ru/",
+                "name": "kremlevskaya-elka.mtuf.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/4b/5a/4b5a5bd01e11aba52137e1e479039aae.jpg",
+              "source": {
+                "link": "http://www.kremlevskaya-elka.mtuf.ru/",
+                "name": "kremlevskaya-elka.mtuf.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/66/18/6618cb27018ab83c6e6b3c4be22c24ce.jpg",
+              "source": {
+                "link": "http://www.kremlevskaya-elka.mtuf.ru/",
+                "name": "kremlevskaya-elka.mtuf.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/11/10/11104f1fbcbc2e882d33914d7e239bd9.jpg",
+              "source": {
+                "link": "http://www.kremlevskaya-elka.mtuf.ru/",
+                "name": "kremlevskaya-elka.mtuf.ru"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/kremlyovskaya-yolka-2017/"
+        },
+        {
+          "id": 136639,
+          "title": "цирковое шоу «Волшебный сон» в Цирке Никулина на Цветном бульваре",
+          "category": 0,
+          "place": {
+            "id": 1208
+          },
+          "tags": [
+            "новый год с детьми",
+            "новогодние спектакли",
+            "цирковые представления",
+            "шоу",
+            "цирковые представления (развлечения)",
+            "шоу (развлечения)"
+          ],
+          "description": "<p>Премьера новогоднего шоу с Дедом Морозом, Снегурочкой и Александром Олешко в роли Сказочника.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/3d/56/3d5615eae2675f704a9b2e63de33596a.jpg",
+              "source": {
+                "link": "http://io.ua/20314066p",
+                "name": "io.ua"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/cirkovoe-shou-volshebnyj-son-v-cirke-nikulina/"
+        },
+        {
+          "id": 134547,
+          "title": "новогоднее детское шоу в Crocus City Hall",
+          "category": 0,
+          "place": {
+            "id": 610
+          },
+          "tags": [
+            "новогодние спектакли",
+            "новый год с детьми",
+            "детские (раздел детям)",
+            "шоу",
+            "шоу (развлечения)"
+          ],
+          "description": "<p>В одном из крупнейших концертных залов столицы маленьких гостей ждёт шикарный новогодний праздник, где любимые экранные мультипликационные персонажи закружат детишек в калейдоскопе грандиозных приключений.</p>\n",
+          "images": [
+            {
+              "image": "https://kudago.com/media/images/event/b0/76/b076918f608153f2c91bd10a00631db7.jpg",
+              "source": {
+                "link": "http://www.7-raduga.ru/shows/tri-bogatirya-2017/",
+                "name": "7-raduga.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/18/ce/18ce1c6f5dd8a902d4693b6258181733.jpg",
+              "source": {
+                "link": "http://www.7-raduga.ru/shows/tri-bogatirya-2017/",
+                "name": "7-raduga.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/91/ea/91ea31ae59640c6432790da6a5db4e7e.jpg",
+              "source": {
+                "link": "http://www.7-raduga.ru/shows/tri-bogatirya-2017/",
+                "name": "7-raduga.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/49/5b/495b7228c5450c7d8ec9544b20af1080.jpg",
+              "source": {
+                "link": "http://www.7-raduga.ru/shows/tri-bogatirya-2017/",
+                "name": "7-raduga.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/73/b6/73b67633338aa2a41c8e5dd5aa697aa8.jpg",
+              "source": {
+                "link": "http://www.7-raduga.ru/shows/tri-bogatirya-2017/",
+                "name": "7-raduga.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/e6/ab/e6abbbc440418aa09a26422197a289ce.jpg",
+              "source": {
+                "link": "http://www.7-raduga.ru/shows/tri-bogatirya-2017/",
+                "name": "7-raduga.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/e3/31/e331ea840a5142a538bd74d34e26d00c.jpg",
+              "source": {
+                "link": "http://www.7-raduga.ru/shows/tri-bogatirya-2017/",
+                "name": "7-raduga.ru"
+              }
+            },
+            {
+              "image": "https://kudago.com/media/images/event/0e/f8/0ef8656c7824ae767415d613fc9aad6b.jpg",
+              "source": {
+                "link": "http://www.7-raduga.ru/shows/tri-bogatirya-2017/",
+                "name": "7-raduga.ru"
+              }
+            }
+          ],
+          "site_url": "https://kudago.com/msk/event/novogodnee-detskoe-shou-v-crocus-city-hall/"
+        }]
+      }
+    </script>
+    <div role="place-tooltip" class="map-place-tooltip"><span role="place-tooltip-text" class="text"></span></div>
+    <div role="hint-tooltip" class="hint-tooltip">
+      <div class="logo"></div>
+      <div role="hint-title" class="title"></div>
+      <div role="hint-desc" class="desc"></div>
+      <div class="footer"><a href="#" role="hint-link">Читать подробнее…</a></div>
+    </div>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/app.js"></script>
+    <script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter41149399 = new Ya.Metrika({ id:41149399, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script>
+    <noscript>
+      <div><img src="https://mc.yandex.ru/watch/41149399" style="position:absolute; left:-9999px;" alt=""></div>
+    </noscript>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-51083731-7', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>увеличить</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="slide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="увеличить-copy" transform="translate(-4.000000, -4.000000)" fill="#222629">
+            <g id="увеличить">
+                <polygon transform="translate(12.000000, 12.000000) rotate(-315.000000) translate(-12.000000, -12.000000) " points="14 3.75735931 10 3.75735931 10 10 3.75735931 10 3.75735931 14 10 14 10 20.2426407 14 20.2426407 14 14 20.2426407 14 20.2426407 10 14 10"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

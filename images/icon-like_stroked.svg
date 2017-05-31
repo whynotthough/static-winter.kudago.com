@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_grade_black_24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="slide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="map.mini-kudago" transform="translate(-49.000000, -642.000000)">
+            <g id="Событие" transform="translate(-1.000000, 0.000000)">
+                <g id="узнать-подробнее" transform="translate(0.000000, 552.000000)">
+                    <g id="ic_grade_black_24px" transform="translate(49.000000, 88.000000)">
+                        <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                        <path d="M11.9996539,6.47373972 L10.9549816,5.40090365 C9.13493971,3.53303212 6.18507336,3.53303212 4.36503144,5.40090365 C2.54498952,7.2680647 2.54498952,10.2968727 4.36503144,12.1647443 L11.9996539,20 L19.6349686,12.1647443 C21.4550105,10.2968727 21.4550105,7.2680647 19.6349686,5.40090365 C17.8149266,3.53303212 14.864368,3.53303212 13.0443261,5.40090365 L11.9996539,6.47373972 Z" id="path-1" stroke-width="2"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

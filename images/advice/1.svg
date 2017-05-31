@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Шарф экспорт</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="slide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="20161117-layout3-kudago" transform="translate(-3534.000000, -389.000000)"></g>
+        <g id="Шарф-экспорт">
+            <g id="шарф">
+                <g>
+                    <rect id="Rectangle-2" x="0" y="0" width="48" height="48"></rect>
+                    <rect id="Rectangle-3" fill="#FFFFFF" x="8" y="7" width="19" height="22"></rect>
+                    <path d="M6.02705326,24.005079 L6.01621143,26.0057511 L8.01618206,26.0165891 L6.01628921,25.9913989 C6.00429834,28.2041058 7.78520392,30 9.9951185,30 C11.5097851,30 13.1102131,28.9170497 13.6714717,27.5139033 L16.1854817,21.2288781 C16.4443961,20.5815921 17.3039714,20 18.0048815,20 C19.1034276,20 19.9989327,20.901071 19.9983114,22.0077655 L19.9954972,27.0211479 L21.9954969,27.0222706 L21.9983111,22.0088882 C21.9995512,19.7997013 20.2109667,18 18.0048815,18 C16.4863951,18 14.891256,19.0792775 14.3285283,20.4860967 L11.8145183,26.7711219 C11.5570611,27.4147649 10.6921768,28 9.9951185,28 C8.89533922,28 8.01027041,27.1074822 8.01625984,26.0022369 L6.01628921,25.9913989 L8.01618206,26.0165891 L8.02702389,24.0159171 L6.02705326,24.005079 Z" id="Path" fill="#222629"></path>
+                    <rect id="Rectangle" fill="#EC1D23" x="7" y="10" width="20" height="2"></rect>
+                    <rect id="Rectangle-Copy" fill="#EC1D23" x="7" y="14" width="20" height="2"></rect>
+                    <path d="M26,8 L26,28 L9.99420208,28 C8.89310031,28 8,27.1048978 8,25.9986131 L8,8 L26,8 Z M28,6 L6,6 L6,25.9986131 C6,28.2084662 7.78752715,30 9.99420208,30 L28,30 L28,6 Z" id="Rectangle-Copy-2" fill="#222629"></path>
+                    <rect id="Rectangle-Copy" fill="#FFFFFF" x="21" y="19" width="20" height="22"></rect>
+                    <rect id="Rectangle-Copy-2" fill="#EC1D23" x="21" y="32" width="20" height="2"></rect>
+                    <rect id="Rectangle-Copy-3" fill="#EC1D23" x="21" y="36" width="20" height="2"></rect>
+                    <path d="M38.0057979,20 C39.1068997,20 40,20.8951022 40,22.0013869 L40,40 L22,40 L22,20 L38.0057979,20 Z M38.0057979,18 L20,18 L20,42 L42,42 L42,22.0013869 C42,19.7915338 40.2124728,18 38.0057979,18 Z" id="Rectangle-Copy" fill="#222629"></path>
+                    <rect id="Rectangle-Copy-3" fill="#222629" x="6" y="4" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-9" fill="#222629" x="20" y="40" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-4" fill="#222629" x="10" y="4" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-10" fill="#222629" x="24" y="40" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-5" fill="#222629" x="14" y="4" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-11" fill="#222629" x="28" y="40" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-6" fill="#222629" x="18" y="4" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-15" fill="#222629" transform="translate(19.000000, 19.000000) rotate(-270.000000) translate(-19.000000, -19.000000) " x="18" y="17" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-16" fill="#222629" transform="translate(11.000000, 29.000000) rotate(-270.000000) translate(-11.000000, -29.000000) " x="10" y="27" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-12" fill="#222629" x="32" y="40" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-7" fill="#222629" x="22" y="4" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-13" fill="#222629" x="36" y="40" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-8" fill="#222629" x="26" y="4" width="2" height="4" rx="1"></rect>
+                    <rect id="Rectangle-Copy-14" fill="#222629" x="40" y="40" width="2" height="4" rx="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

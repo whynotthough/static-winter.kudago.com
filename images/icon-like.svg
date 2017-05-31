@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>close2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="slide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pop-up-map-kudago" transform="translate(-1367.000000, -49.000000)" fill="#222629">
+            <g id="Карта">
+                <g id="элементы-интерфейса" transform="translate(434.000000, 38.000000)">
+                    <g id="close2" transform="translate(932.000000, 10.000000)">
+                    	<path xmlns="http://www.w3.org/2000/svg" d="M11.6665,6.32116667 L10.6605,5.3145 C8.90783333,3.56183333 6.06716667,3.56183333 4.3145,5.3145 C2.56183333,7.0665 2.56183333,9.9085 4.3145,11.6611667 L11.6665,19.0131667 L19.0191667,11.6611667 C20.7718333,9.9085 20.7718333,7.0665 19.0191667,5.3145 C17.2665,3.56183333 14.4251667,3.56183333 12.6725,5.3145 L11.6665,6.32116667 Z" class="icon-heart" stroke-width="3"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

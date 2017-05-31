@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="98px" height="24px" viewBox="0 0 98 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>follow_button-small copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="slide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pop-up-map.mini-kudago" transform="translate(-59.000000, -579.000000)">
+            <g id="Событие" transform="translate(-1.000000, 0.000000)">
+                <g id="узнать-подробнее" transform="translate(0.000000, 499.000000)">
+                    <g id="pop-up" transform="translate(44.000000, 0.000000)">
+                        <g id="соц.сети" transform="translate(16.000000, 16.000000)">
+                            <g id="follow_button-small-copy-2" transform="translate(0.000000, 64.000000)">
+                                <g id="follow">
+                                    <rect id="background" fill="#4267B2" x="0" y="0" width="98" height="24" rx="3"></rect>
+                                    <text id="Поделиться" font-family="Helvetica-Bold, Helvetica" font-size="11" font-weight="bold" fill="#FFFFFF">
+                                        <tspan x="25" y="16">Поделиться</tspan>
+                                    </text>
+                                    <g id="Facebook-black" transform="translate(5.000000, 4.000000)" fill="#FFFFFF">
+                                        <g id="Icons">
+                                            <g>
+                                                <g id="Black">
+                                                    <path d="M8.54611833,16 L0.883077333,16 C0.395224333,16 0,15.6045307 0,15.1168677 L0,0.883070333 C0,0.395283333 0.395286333,0 0.883077333,0 L15.116985,0 C15.6046517,0 16,0.395283333 16,0.883070333 L16,15.1168677 C16,15.6045927 15.6045897,16 15.116985,16 L11.0397683,16 L11.0397683,9.80391833 L13.119507,9.80391833 L13.4309183,7.38919533 L11.0397683,7.38919533 L11.0397683,5.847547 C11.0397683,5.148429 11.233904,4.67200333 12.23643,4.67200333 L13.5151037,4.67144433 L13.5151037,2.511697 C13.293962,2.48226933 12.534928,2.41652333 11.6518507,2.41652333 C9.808278,2.41652333 8.54611833,3.541842 8.54611833,5.608403 L8.54611833,7.38919533 L6.46104067,7.38919533 L6.46104067,9.80391833 L8.54611833,9.80391833 L8.54611833,16 L8.54611833,16 L8.54611833,16 Z" id="Facebook"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
