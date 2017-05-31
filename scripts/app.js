@@ -1707,7 +1707,7 @@ function setEventsAmount() {
 }
 
 $(function () {
-  $.getJSON('/db.json', function (data) {
+  $.getJSON('./db.json', function (data) {
     DB = data;
     setEventsAmount();
     saveOriginalMapCoords();
